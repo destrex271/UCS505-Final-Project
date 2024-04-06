@@ -19,8 +19,13 @@ void display(){
 int main(int argc, char** argv){
     glutInit(&argc, argv);
     std::string title = "Pacman";
+    
+    Game::GameObject* gameObj = new Game::GameObject(100, 100);
+    Game::setGameObject(gameObj);
+
     Game::createWindow(title.data(), 300, 300);
     glutDisplayFunc(display);
+    glutKeyboardFunc(Game::handleKeyboard);
     glutMainLoop();
     return 0;
 }

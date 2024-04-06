@@ -1,17 +1,21 @@
 CC = g++
 DFLAGS = -lglut -lGLU -lGL
+INC_DIR = ./include
 
-output: main.o utils.o pacman.o
-	$(CC) main.o utils.o pacman.o -o output $(DFLAGS)
+output: main.o utils.o pacman.o game.o
+	$(CC) main.o utils.o pacman.o game.o -o output $(DFLAGS)
 
 main.o: main.cpp
-	$(CC) -c main.cpp $(DFLAGS)
+	$(CC) -c main.cpp -I$(INC_DIR) $(DFLAGS)
 
-utils.o: utils.cpp ./include/utils.hpp
-	$(CC) -c utils.cpp $(DFLAGS)
+utils.o: utils.cpp $(INC_DIR)/utils.hpp
+	$(CC) -c utils.cpp -I$(INC_DIR) $(DFLAGS)
 
-pacman.o: pacman.cpp ./include/pacman.hpp
-	$(CC) -c pacman.cpp $(DFLAGS)
+pacman.o: pacman.cpp $(INC_DIR)/pacman.hpp
+	$(CC) -c pacman.cpp -I$(INC_DIR) $(DFLAGS)
+
+game.o: game.cpp $(INC_DIR)/game.hpp
+	$(CC) -c game.cpp -I$(INC_DIR) $(DFLAGS)
 
 clean:
-	rm *.o
+	rm -f *.o output

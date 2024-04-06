@@ -10,6 +10,7 @@ namespace Game{
 
     void Pacman::setDirection(Direction dirn){
         this->currentDirection = dirn;
+        std::cout << "Direction set to " << dirn << std::endl;
     }
 
     void Pacman::renderPacman(){
@@ -18,6 +19,27 @@ namespace Game{
     }
 
     void Pacman::movePacman(){
-        std::cout << "TODO!" << std::endl;
+        int accx = 0;
+        int accy = 0;
+        switch(currentDirection){
+            case UP:
+                accy = -1;
+                accx = 0;
+                break;
+            case DOWN:
+                accy = 1;
+                accx = 0;
+                break;
+            case LEFT:
+                accx = -1;
+                accy = 0;
+                break;
+            case RIGHT:
+                accx = 1;
+                accy = 0;
+                break;
+        }
+        this->pos_x += accx;
+        this->pos_y += accy;
     }
 }
