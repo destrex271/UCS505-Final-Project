@@ -1,14 +1,18 @@
 #include "include/utils.hpp"
 #include <GL/freeglut_std.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
+#include <GL/gl.h>
 #include <iostream>
 
 // Window related utility funcitons go here
 
 
 namespace Game{
+    int windowId;
     void createWindow(char* title, int WIDTH, int HEIGHT){
         std::cout << "Creating Window" << std::endl;
-        glutCreateWindow(title);
+        windowId = glutCreateWindow(title);
         glutInitWindowSize(WIDTH, HEIGHT);
     }
 
@@ -45,6 +49,17 @@ namespace Game{
                 gameObject->displayData();
                 gameObject->pacmanObj->setDirection(Direction::DOWN);
                 break;
+            case 'q':
+            case 'Q':
+                std::cout << "Exiting Game!" << std::endl;
+                gameObject->displayData();
+                quitGame();
         }
     }
+
+    void quitGame(){
+        gameObject->gameOver = true;
+        glutDestroyWindow(windowId);
+    }
+
 }

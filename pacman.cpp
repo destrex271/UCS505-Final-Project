@@ -2,10 +2,10 @@
 
 namespace Game{
     // Pacman Object
-    Pacman::Pacman(int grid_height, int grid_width){
+    Pacman::Pacman(int screen_height, int screen_width){
         this->setDirection(Direction::RIGHT);
-        pos_x = grid_width/2;
-        pos_y = grid_height/2;
+        pos_x = screen_width/2;
+        pos_y = screen_height/2;
     }
 
     void Pacman::setDirection(Direction dirn){

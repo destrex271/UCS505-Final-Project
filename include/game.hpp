@@ -1,14 +1,13 @@
 #include "pacman.hpp"
-#include <vector>
 
 namespace Game{
     class GameObject{
         public:
             Pacman* pacmanObj;
-            int grid_height, grid_width;
-            std::vector<std::vector<int>> grid;
+            // Max Possible Size 300, 300
+            int screen_height, screen_width;
             bool gameOver; // If true terminate everything
-            GameObject(int grid_height, int grid_width);
+            GameObject(int screen_height, int screen_width);
             void displayData();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);
     };

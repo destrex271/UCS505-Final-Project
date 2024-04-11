@@ -11,11 +11,11 @@ namespace Game{
         private:
             int pos_x;
             int pos_y;
-            int grid_height, grid_width;
+            int screen_height, screen_width;
             int color[3];
             Direction currentDirection;
         public:
-            Pacman(int grid_height, int grid_width);
+            Pacman(int screen_height, int screen_width);
             void movePacman();
             void setDirection(Direction dirn);
             void renderPacman();
