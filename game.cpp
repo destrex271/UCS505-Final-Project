@@ -1,13 +1,16 @@
 #include "include/game.hpp"
 
 namespace Game{
-    GameObject::GameObject(int screen_height, int screen_width){
+    GameObject::GameObject(int screen_height, int screen_width, int num = 1){
         std::cout << "Created Game Session" << std::endl;
         this->screen_width = screen_width;
         this->screen_height = screen_height;
         pacmanObj = new Pacman(screen_height, screen_width);
         gameOver = false;
 
+        this->num_ghosts = num;
+        Ghost * ghosts = new Ghost[num_ghosts];
+        this->score = 0;
     }
 
     void GameObject::displayData(){
