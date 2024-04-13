@@ -9,7 +9,7 @@ namespace Game{
         gameOver = false;
 
         this->num_ghosts = num;
-        Ghost * ghosts = new Ghost[num_ghosts];
+        /* Ghost * ghosts = new Ghost[num_ghosts]; */
         this->score = 0;
     }
 
