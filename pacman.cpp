@@ -1,4 +1,6 @@
 #include "include/pacman.hpp"
+#include <iostream>
+#include "include/shapes.hpp"
 
 namespace Game{
     // Pacman Object
@@ -13,9 +15,10 @@ namespace Game{
         std::cout << "Direction set to " << dirn << std::endl;
     }
 
-    void Pacman::renderPacman(){
+    void Pacman::drawPacman(){
         // OpenGL commands to draw a circle or load a pacman sprite
-        std::cout << "TODO!" << std::endl;
+        std::cout << "Drawing pacman" << std::endl;
+        Circle::drawPacmanCircle(200, 0, 0);
     }
 
     void Pacman::movePacman(){

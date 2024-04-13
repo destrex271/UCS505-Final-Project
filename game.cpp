@@ -26,4 +26,8 @@ namespace Game{
         return {screen_dim.first / (1.0 * this->screen_width), screen_dim.second / (1.0 * this->screen_height)};
     }
 
+    void GameObject::renderGame(){
+        this->pacmanObj->drawPacman();
+    }
+
 }
