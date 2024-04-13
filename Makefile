@@ -20,8 +20,5 @@ ghost.o: ghost.cpp $(INC_DIR)/ghost.hpp
 game.o: game.cpp $(INC_DIR)/game.hpp
 	$(CC) -c game.cpp -I$(INC_DIR) $(DFLAGS)
 
-pellet.o: pellet.cpp $(INC_DIR)/pellet.hpp
-	$(CC) -c pellet.cpp -I$(INC_DIR) $(DFLAGS)
-
 clean:
 	rm -f *.o output

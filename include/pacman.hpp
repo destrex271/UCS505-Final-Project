@@ -1,4 +1,3 @@
-#include <iostream>
 
 namespace Game{
     enum Direction{
@@ -18,6 +17,6 @@ namespace Game{
             Pacman(int screen_height, int screen_width);
             void movePacman();
             void setDirection(Direction dirn);
-            void renderPacman();
+            void drawPacman();
     };
 }

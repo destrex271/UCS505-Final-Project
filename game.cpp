@@ -9,7 +9,7 @@ namespace Game{
         gameOver = false;
 
         this->num_ghosts = num;
-        Ghost * ghosts = new Ghost[num_ghosts];
+        /* Ghost * ghosts = new Ghost[num_ghosts]; */
         this->score = 0;
     }
 
@@ -24,6 +24,10 @@ namespace Game{
 
     std::pair<int, int> GameObject::scaleToWindowDim(std::pair<int, int> screen_dim){
         return {screen_dim.first / (1.0 * this->screen_width), screen_dim.second / (1.0 * this->screen_height)};
+    }
+
+    void GameObject::renderGame(){
+        this->pacmanObj->drawPacman();
     }
 
 }

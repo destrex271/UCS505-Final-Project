@@ -22,6 +22,10 @@ namespace Game{
         gameObject = gobj;
     }
 
+    void drawGame(){
+        gameObject->renderGame();
+    }
+
     // Handle keyboard events
     void handleKeyboard(unsigned char key, int mouseX, int mouseY){
         switch(key){
@@ -61,5 +65,7 @@ namespace Game{
         gameObject->gameOver = true;
         glutDestroyWindow(windowId);
     }
+
+    
 
 }
