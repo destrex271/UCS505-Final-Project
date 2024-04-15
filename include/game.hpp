@@ -9,13 +9,12 @@ namespace Game{
             // Max Possible Size 300, 300
             int screen_height, screen_width;
             bool gameOver; // If true terminate everything
-            GameObject(int screen_height, int screen_width, int num);
+            GameObject(int screen_height, int screen_width);
             void displayData();
             void renderGame();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);
 
-            Ghost * ghosts;
-            int num_ghosts;
+            Ghost ghosts[1];
             int score;
     };
 

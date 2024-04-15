@@ -29,7 +29,7 @@ int main(int argc, char** argv){
     std::string title = "Pacman";
     
     //Third argument is for number of ghosts
-    Game::GameObject* gameObj = new Game::GameObject(100, 100, 1);
+    Game::GameObject* gameObj = new Game::GameObject(100, 100);
     Game::setGameObject(gameObj);
 
     Game::createWindow(title.data(), 300, 300);

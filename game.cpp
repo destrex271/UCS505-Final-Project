@@ -1,15 +1,14 @@
 #include "include/game.hpp"
+#include <vector>
 
 namespace Game{
-    GameObject::GameObject(int screen_height, int screen_width, int num = 1){
+    GameObject::GameObject(int screen_height, int screen_width){
         std::cout << "Created Game Session" << std::endl;
         this->screen_width = screen_width;
         this->screen_height = screen_height;
         pacmanObj = new Pacman(screen_height, screen_width);
         gameOver = false;
 
-        this->num_ghosts = num;
-        /* Ghost * ghosts = new Ghost[num_ghosts]; */
         this->score = 0;
     }
 
@@ -27,7 +26,11 @@ namespace Game{
     }
 
     void GameObject::renderGame(){
-        this->pacmanObj->drawPacman();
+        // this->pacmanObj->drawPacman();
+
+        Ghost blinky = this->ghosts[0];
+        std::vector<float> colors = blinky.getGhostColor();
+        blinky.renderGhost(200, 0, 0, colors[0], colors[1], colors[2]);
     }
 
 }

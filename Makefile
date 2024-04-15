@@ -3,8 +3,8 @@ DFLAGS = -lglut -lGLU -lGL
 INC_DIR = ./include
 
 
-output: main.o utils.o pacman.o game.o shapes.o pellet.o
-	$(CC) main.o utils.o pacman.o game.o shapes.o pellet.o -o output $(DFLAGS)
+output: main.o utils.o pacman.o game.o shapes.o pellet.o ghost.o
+	$(CC) main.o utils.o pacman.o game.o shapes.o pellet.o ghost.o -o output $(DFLAGS)
 
 main.o: main.cpp
 	$(CC) -c main.cpp -I$(INC_DIR) $(DFLAGS)
