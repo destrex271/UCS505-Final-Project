@@ -25,19 +25,19 @@ namespace Game{
         int accx = 0;
         int accy = 0;
         switch(currentDirection){
-            case UP:
+            case Direction::UP:
                 accy = -1;
                 accx = 0;
                 break;
-            case DOWN:
+            case Direction::DOWN:
                 accy = 1;
                 accx = 0;
                 break;
-            case LEFT:
+            case Direction::LEFT:
                 accx = -1;
                 accy = 0;
                 break;
-            case RIGHT:
+            case Direction::RIGHT:
                 accx = 1;
                 accy = 0;
                 break;

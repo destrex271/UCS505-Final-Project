@@ -35,7 +35,7 @@ namespace Game{
         glFlush();
     }
 
-    void drawPolygon(std::vector<std::pair<int, int>>& points){
+    void drawPolygon(std::vector<std::pair<int, int>> points){
         glPointSize(1.0);
         glBegin(GL_POLYGON);
         for(auto point: points){
