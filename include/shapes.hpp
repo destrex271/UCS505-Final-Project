@@ -7,6 +7,7 @@
 namespace Game{
     // Shapes
     void drawPoint(int x, int y);
+    void drawPolygon(std::vector<std::pair<int,int>> points);
     namespace Circle{
         std::vector<int> calc_d_MidPoint(int pi, int x, int y); 
         void drawPacmanCircle(int radius, int x_offset, int y_offset);
@@ -15,5 +16,6 @@ namespace Game{
 
     namespace Line{
         void drawLineDDA(int x1, int x2, int y1, int y2);
+        std::vector<std::pair<int, int>> getLinePointsDDA(int x1, int x2, int y1, int y2);
     }
 }

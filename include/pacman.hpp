@@ -1,3 +1,4 @@
+#include "commons.hpp"
 
 namespace Game{
     enum Direction{
@@ -6,7 +7,7 @@ namespace Game{
         LEFT,
         RIGHT
     };
-    class Pacman{
+    class Pacman: public BoxObject{
         private:
             int pos_x;
             int pos_y;

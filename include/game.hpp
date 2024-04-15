@@ -1,6 +1,5 @@
 #include "pacman.hpp"
 #include "ghost.hpp"
-#include <iostream>
 
 namespace Game{
     class GameObject{
@@ -18,6 +17,8 @@ namespace Game{
             int num_ghosts;
             int score;
     };
+
+    
 
     void drawGameGrid();
 }

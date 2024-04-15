@@ -18,7 +18,7 @@ namespace Game{
     void Pacman::drawPacman(){
         // OpenGL commands to draw a circle or load a pacman sprite
         std::cout << "Drawing pacman" << std::endl;
-        Circle::drawPacmanCircle(200, 0, 0);
+        Circle::drawPacmanCircle(45, 0, 0);
     }
 
     void Pacman::movePacman(){
