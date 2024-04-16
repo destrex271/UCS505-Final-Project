@@ -1,6 +1,7 @@
 #include "include/shapes.hpp"
 #include <GL/gl.h>
 #include <algorithm>
+#include <iostream>
 
 namespace Game{
     std::vector<int> Circle::calc_d_MidPoint(int pi, int x, int y){
@@ -94,19 +95,65 @@ namespace Game{
         return points;
     }
 
-    void Circle::drawPacmanCircle(int radius, int x_offset, int y_offset){
+    void Circle::drawPacmanCircle(int radius, int x_offset, int y_offset,  int dirn){
         glClear(GL_COLOR_BUFFER_BIT);
         int y = radius, x = 0, pi = (5/4.0) - y;
         std::vector<std::pair<int, int>> points;
         while(x <= y){
             // Draw points
             glColor3f(1.0f, 1.0f, 1.0f);
-            points.push_back({x, y});
-            points.push_back({x, -y});
-            points.push_back({-x, y});
-            points.push_back({-x, -y});
-            points.push_back({y, x});
-            points.push_back({y, -x});
+            switch(dirn){
+                case 1: { // RIGHT FACE
+                    points.push_back({x + x_offset, y + y_offset});
+                    points.push_back({x + x_offset, -y + y_offset});
+                    points.push_back({-x + x_offset, y + y_offset});
+                    points.push_back({-x + x_offset, -y + y_offset});
+                    points.push_back({y + x_offset, x + y_offset});
+                    points.push_back({y + x_offset, -x + y_offset});
+                    break;
+                }
+                case 0: { // LEFT FACE
+                    points.push_back({x + x_offset, y + y_offset});
+                    points.push_back({x + x_offset, -y + y_offset});
+                    points.push_back({-x + x_offset, y + y_offset});
+                    points.push_back({-x + x_offset, -y + y_offset});
+                    /* points.push_back({y + x_offset, x + y_offset}); */
+                    /* points.push_back({y + x_offset, -x + y_offset}); */
+                    points.push_back({-y + x_offset, -x + y_offset});
+                    points.push_back({-y + x_offset, x + y_offset});
+                    break;
+                }
+                case 2:{
+                    points.push_back({x + x_offset, y + y_offset});
+                    /* points.push_back({x + x_offset, -y + y_offset}); */
+                    points.push_back({-x + x_offset, y + y_offset});
+                    /* points.push_back({-x + x_offset, -y + y_offset}); */
+                    points.push_back({y + x_offset, x + y_offset});
+                    points.push_back({y + x_offset, -x + y_offset});
+                    points.push_back({-y + x_offset, -x + y_offset});
+                    points.push_back({-y + x_offset, x + y_offset});
+                    break;
+                }
+                case 3:{
+                    /* points.push_back({x + x_offset, y + y_offset}); */
+                    points.push_back({x + x_offset, -y + y_offset});
+                    /* points.push_back({-x + x_offset, y + y_offset}); */
+                    points.push_back({-x + x_offset, -y + y_offset});
+                    points.push_back({y + x_offset, x + y_offset});
+                    points.push_back({y + x_offset, -x + y_offset});
+                    points.push_back({-y + x_offset, -x + y_offset});
+                    points.push_back({-y + x_offset, x + y_offset});
+                    break;
+                }
+            }
+            /* points.push_back({x + x_offset, y + y_offset}); */
+            /* points.push_back({x + x_offset, -y + y_offset}); */
+            /* points.push_back({-x + x_offset, y + y_offset}); */
+            /* points.push_back({-x + x_offset, -y + y_offset}); */
+            /* points.push_back({y + x_offset, x + y_offset}); */
+            /* points.push_back({y + x_offset, -x + y_offset}); */
+            /* points.push_back({-y + x_offset, x + y_offset}); */
+            /* points.push_back({-y + x_offset, -x + y_offset}); */
 
             std::vector<int> coords = Circle::calc_d_MidPoint(pi, x, y);
             pi = coords[0];
@@ -114,17 +161,52 @@ namespace Game{
             y = coords[2];
         }
 
-        auto pts = Line::getLinePointsDDA(-y, x_offset, x, y_offset);
-        auto pt2 = Line::getLinePointsDDA(-y, x_offset, -x, y_offset);
-        
-        for(auto pt: pts){
-            points.emplace_back(pt);
-        }
-        for(auto pt: pt2){
-            points.push_back(pt);
+        drawPoints(points);
+
+        glBegin(GL_LINES);
+        switch(dirn){
+            case 0:{
+                std::cout << "LINE!" << std::endl;
+                glVertex2f(y+x_offset, x+y_offset);
+                glVertex2f(x_offset, y_offset);
+                glVertex2f(y+x_offset, -x+y_offset);
+                glVertex2f(x_offset, y_offset);
+                break;
+            }
+            case 1:{
+                glVertex2f(-y+x_offset, x+y_offset);
+                glVertex2f(x_offset, y_offset);
+                glVertex2f(-y+x_offset, -x+y_offset);
+                glVertex2f(x_offset, y_offset);
+                break;
+            }
+            case 2:{
+                glVertex2f(x+x_offset, -y+y_offset);
+                glVertex2f(x_offset, y_offset);
+                glVertex2f(-x+x_offset, -y+y_offset);
+                glVertex2f(x_offset, y_offset);
+                break;
+            }
+            case 3:{
+                glVertex2f(x+x_offset, y+y_offset);
+                glVertex2f(x_offset, y_offset);
+                glVertex2f(-x+x_offset, y+y_offset);
+                glVertex2f(x_offset, y_offset);
+                break;
+            }
         }
 
-        sort(points.begin(), points.end());
-        drawPoints(points);
+        glEnd();
+        glFlush();
+        /* auto pts = Line::getLinePointsDDA(-y + x_offset, x_offset, x + y_offset, y_offset); */
+        /* auto pt2 = Line::getLinePointsDDA(-y + x_offset, x_offset, -x + y_offset, y_offset); */
+        /*  */
+        /* for(auto pt: pt1){ */
+        /*     points.emplace_back(pt); */
+        /* } */
+        /* for(auto pt: pt2){ */
+        /*     points.push_back(pt); */
+        /* } */
+        /* sort(points.begin(), points.end()); */
     }
 }

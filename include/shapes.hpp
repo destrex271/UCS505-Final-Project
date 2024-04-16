@@ -10,7 +10,7 @@ namespace Game{
     void drawPolygon(std::vector<std::pair<int,int>> points);
     namespace Circle{
         std::vector<int> calc_d_MidPoint(int pi, int x, int y); 
-        void drawPacmanCircle(int radius, int x_offset, int y_offset);
+        void drawPacmanCircle(int radius, int x_offset, int y_offset, int dirn);
         void drawCircle(int radius, int x_offset, int y_offset);
     }
 

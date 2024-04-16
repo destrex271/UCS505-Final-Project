@@ -28,6 +28,7 @@ namespace Game{
 
     void GameObject::renderGame(){
         this->pacmanObj->drawPacman();
+        this->pacmanObj->movePacman();
     }
 
 }

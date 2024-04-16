@@ -6,8 +6,13 @@ namespace Game{
     // Pacman Object
     Pacman::Pacman(int screen_height, int screen_width){
         this->setDirection(Direction::RIGHT);
-        pos_x = screen_width/2;
-        pos_y = screen_height/2;
+        this->screen_width = screen_width;
+        this->screen_height = screen_height;
+        this->pos_x = screen_width/2;
+        this->pos_y = screen_height/2;
+        std::cout << pos_x << " " << pos_y << std::endl;
+        this->area_x = 30;
+        this->area_y = 30;
     }
 
     void Pacman::setDirection(Direction dirn){
@@ -17,8 +22,24 @@ namespace Game{
 
     void Pacman::drawPacman(){
         // OpenGL commands to draw a circle or load a pacman sprite
-        std::cout << "Drawing pacman" << std::endl;
-        Circle::drawPacmanCircle(45, 0, 0);
+        /* std::cout << "Drawing pacman: " << pos_x << " " << pos_y << std::endl; */
+        switch(this->currentDirection){
+            case Direction::RIGHT: {
+                Circle::drawPacmanCircle(this->area_x - 10, pos_x, pos_y, 0);
+                break;
+            }
+            case Direction::LEFT: {
+                Circle::drawPacmanCircle(this->area_x - 10, pos_x, pos_y, 1);
+                break;
+            }
+            case Direction::UP: {
+                Circle::drawPacmanCircle(this->area_x - 10, pos_x, pos_y, 2);
+                break;
+            }
+            case Direction::DOWN: {
+                Circle::drawPacmanCircle(this->area_x - 10, pos_x, pos_y, 3);
+            }
+        }
     }
 
     void Pacman::movePacman(){
@@ -26,23 +47,30 @@ namespace Game{
         int accy = 0;
         switch(currentDirection){
             case Direction::UP:
-                accy = -1;
-                accx = 0;
+                this->acc_y = -1;
+                this->acc_x = 0;
                 break;
             case Direction::DOWN:
-                accy = 1;
-                accx = 0;
+                this->acc_y = 1;
+                this->acc_x = 0;
                 break;
             case Direction::LEFT:
-                accx = -1;
-                accy = 0;
+                this->acc_y = 0;
+                this->acc_x = -1;
                 break;
             case Direction::RIGHT:
-                accx = 1;
-                accy = 0;
+                this->acc_y = 0;
+                this->acc_x = 1;
                 break;
         }
-        this->pos_x += accx;
-        this->pos_y += accy;
+
+        std::cout << "IN MOVE PACMAN: ";
+        std::cout << this->acc_x << " " << this->acc_y << std::endl;
+        this->checkCollisions();
+
+        std::cout << "AFTER: IN MOVE PACMAN: ";
+        std::cout << this->acc_x << " " << this->acc_y << std::endl;
+        this->pos_x += this->acc_x;
+        this->pos_y += this->acc_y;
     }
 }
