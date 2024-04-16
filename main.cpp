@@ -39,7 +39,7 @@ int main(int argc, char** argv){
 
     Game::setGameObject(gameObj);
 
-    Game::createWindow(title.data(), 300, 300);
+    Game::createWindow(title.data(), 500, 500);
     glutDisplayFunc(display);
     glutKeyboardFunc(Game::handleKeyboard);
     init();

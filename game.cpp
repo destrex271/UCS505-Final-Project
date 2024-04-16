@@ -8,7 +8,6 @@ namespace Game{
         this->screen_width = screen_width;
         this->screen_height = screen_height;
         pacmanObj = new Pacman(screen_height, screen_width);
-        ghostObj = new Ghost;
         gameOver = false;
 
         this->score = 0;
@@ -31,9 +30,9 @@ namespace Game{
         this->pacmanObj->drawPacman();
         this->pacmanObj->movePacman();
 
-        Ghost blinky = this->ghosts[0];
-        std::vector<float> colors = blinky.getGhostColor();
-        blinky.renderGhost(200, 0, 0, colors[0], colors[1], colors[2]);
+        // Ghost blinky = this->ghosts[0];
+        // std::vector<float> colors = blinky.getGhostColor();
+        // blinky.renderGhost(200, 0, 0, colors[0], colors[1], colors[2]);
 
     }
 
