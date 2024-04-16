@@ -26,11 +26,13 @@ namespace Game{
     }
 
     void GameObject::renderGame(){
-        // this->pacmanObj->drawPacman();
+        this->pacmanObj->drawPacman();
+        this->pacmanObj->movePacman();
 
         Ghost blinky = this->ghosts[0];
         std::vector<float> colors = blinky.getGhostColor();
         blinky.renderGhost(200, 0, 0, colors[0], colors[1], colors[2]);
+
     }
 
 }
