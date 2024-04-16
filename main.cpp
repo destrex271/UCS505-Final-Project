@@ -5,6 +5,7 @@
 
 #include "include/utils.hpp"
 #include <string>
+#include <iostream>
 
 #define TIMER_DELAY 3
 
@@ -34,7 +35,7 @@ int main(int argc, char** argv){
     std::string title = "Pacman";
     
 
-    Game::GameObject* gameObj = new Game::GameObject(500, 500, 1);
+    Game::GameObject* gameObj = new Game::GameObject(500, 500);
 
     Game::setGameObject(gameObj);
 

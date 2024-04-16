@@ -1,4 +1,5 @@
 #include "include/game.hpp"
+#include <iostream>
 #include <vector>
 
 namespace Game{
@@ -7,6 +8,7 @@ namespace Game{
         this->screen_width = screen_width;
         this->screen_height = screen_height;
         pacmanObj = new Pacman(screen_height, screen_width);
+        ghostObj = new Ghost;
         gameOver = false;
 
         this->score = 0;

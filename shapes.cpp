@@ -180,14 +180,6 @@ namespace Game{
                     break;
                 }
             }
-            /* points.push_back({x + x_offset, y + y_offset}); */
-            /* points.push_back({x + x_offset, -y + y_offset}); */
-            /* points.push_back({-x + x_offset, y + y_offset}); */
-            /* points.push_back({-x + x_offset, -y + y_offset}); */
-            /* points.push_back({y + x_offset, x + y_offset}); */
-            /* points.push_back({y + x_offset, -x + y_offset}); */
-            /* points.push_back({-y + x_offset, x + y_offset}); */
-            /* points.push_back({-y + x_offset, -x + y_offset}); */
 
             std::vector<int> coords = Circle::calc_d_MidPoint(pi, x, y);
             pi = coords[0];
@@ -232,16 +224,6 @@ namespace Game{
 
         glEnd();
         glFlush();
-        /* auto pts = Line::getLinePointsDDA(-y + x_offset, x_offset, x + y_offset, y_offset); */
-        /* auto pt2 = Line::getLinePointsDDA(-y + x_offset, x_offset, -x + y_offset, y_offset); */
-        /*  */
-        /* for(auto pt: pt1){ */
-        /*     points.emplace_back(pt); */
-        /* } */
-        /* for(auto pt: pt2){ */
-        /*     points.push_back(pt); */
-        /* } */
-        /* sort(points.begin(), points.end()); */
     }
 
     void Sprites::drawGhost(int radius, int h, int k, float r, float g, float b){
