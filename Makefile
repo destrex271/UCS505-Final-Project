@@ -3,8 +3,8 @@ DFLAGS = -lglut -lGLU -lGL
 INC_DIR = ./include
 
 
-output: main.o utils.o pacman.o game.o shapes.o commons.o
-	$(CC) main.o utils.o pacman.o game.o shapes.o commons.o -o output $(DFLAGS)
+output: main.o utils.o pacman.o game.o shapes.o commons.o pellet.o ghost.o
+	$(CC) main.o utils.o pacman.o game.o shapes.o pellet.o ghost.o commons.o -o output $(DFLAGS)
 
 main.o: main.cpp
 	$(CC) -c main.cpp -I$(INC_DIR) $(DFLAGS)
@@ -24,8 +24,13 @@ game.o: game.cpp $(INC_DIR)/game.hpp
 shapes.o: shapes.cpp $(INC_DIR)/shapes.hpp
 	$(CC) -c shapes.cpp -I$(INC_DIR) $(DFLAGS)
 
+
 commons.o: commons.cpp $(INC_DIR)/commons.hpp
 	$(CC) -c commons.cpp -I$(INC_DIR) $(DFLAGS)
+
+pellet.o: pellet.cpp $(INC_DIR)/pellet.hpp
+	$(CC) -c pellet.cpp -I$(INC_DIR) $(DFLAGS)
+
 
 clean:
 	rm -f *.o output

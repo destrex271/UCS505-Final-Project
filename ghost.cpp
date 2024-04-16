@@ -1,4 +1,6 @@
 #include "include/ghost.hpp"
+#include "include/shapes.hpp"
+#include <iostream>
 
 namespace Game{
     
@@ -7,8 +9,19 @@ namespace Game{
         this->pos_x = 0;
         this->pos_y = 0;
         this->harmless = false;
-        float temp[3] = {1.0, 0., 0.};
         color[0] = 1.; 
+        color[1] = 0.;
+        color[2] = 0.;
+    }
+
+    void Ghost::setGhostColor(float r, float g, float b){
+        color[0] = r;
+        color[1] = g;
+        color[2] = b;
+    }
+
+    std::vector<float> Ghost::getGhostColor(){
+        return {color[0], color[1], color[2]};
     }
 
     void Ghost::setHarmless(bool state){
@@ -29,8 +42,10 @@ namespace Game{
         else pos_y += step_y;
     }
 
-    void Ghost::renderGhost(){
+    void Ghost::renderGhost(int radius, int h, int k, float r, float g, float b){
 
-        std::cout << "TODO" << std::endl;
+        std::cout << "Drawing ghost..." << std::endl;
+
+        Sprites::drawGhost(radius, h, k, r, g, b);
     }
 }
