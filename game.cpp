@@ -59,6 +59,8 @@ namespace Game{
         this->ghosts[3].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
 
         this->checkGhostCollision();
+
+        //function to update pellet counts
     }
 
     void GameObject::quitWindow(){
@@ -72,7 +74,6 @@ namespace Game{
                 this->gameOver = true;
             }
         }
-
     }
 
 }

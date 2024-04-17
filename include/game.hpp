@@ -4,6 +4,7 @@ namespace Game{
     class GameObject{
         public:
             Pacman* pacmanObj;
+            std::vector<Food> food;
             // Max Possible Size 300, 300
             int screen_height, screen_width, window_id;
             bool gameOver; // If true terminate everything

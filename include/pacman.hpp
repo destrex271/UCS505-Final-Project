@@ -12,6 +12,12 @@ namespace Game{
             void drawPacman();
     };
 
+    class Food: public BoxObject{
+        public:
+            Food(int pos_x, int pos_y);
+            void drawFood();
+    };
+
     class Ghost: public BoxObject{
             bool harmless;
             int timeLeftHarmless;
