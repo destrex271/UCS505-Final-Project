@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 
-#define TIMER_DELAY 3
+#define TIMER_DELAY 5
 
 void animate(int v){
     glutPostRedisplay();
@@ -36,6 +36,22 @@ int main(int argc, char** argv){
     
 
     Game::GameObject* gameObj = new Game::GameObject(500, 500);
+    gameObj->ghosts[1].setX(30);
+    gameObj->ghosts[1].setY(30);
+    gameObj->ghosts[1].setAx(2);
+    gameObj->ghosts[1].setAy(2);
+    
+
+    gameObj->ghosts[2].setX(470);
+    gameObj->ghosts[2].setY(30);
+    gameObj->ghosts[2].setAx(3);
+    gameObj->ghosts[2].setAy(3);
+
+    gameObj->ghosts[3].setX(30);
+    gameObj->ghosts[3].setY(470);
+    gameObj->ghosts[3].setAx(4);
+    gameObj->ghosts[3].setAy(4);
+
 
     Game::setGameObject(gameObj);
 

@@ -5,6 +5,8 @@
 namespace Game{
     
     Ghost::Ghost(){
+        acc_x=1;
+        acc_y=1;
         pointsIfEaten = 100;
         pos_x = 450;
         pos_y = 450;
@@ -33,6 +35,13 @@ namespace Game{
         return this->pos_y;
     }
 
+    void Ghost::setAx(int acc_x){
+        this->acc_x = acc_x;
+    }
+
+    void Ghost::setAy(int acc_y){
+        this->acc_y = acc_y;
+    }
     void Ghost::setGhostColor(float r, float g, float b){
         color[0] = r;
         color[1] = g;
@@ -57,9 +66,12 @@ namespace Game{
         int diff_x =  pos_x_pacman - this->pos_x;
         int diff_y = pos_y_pacman - this->pos_y;
 
+        std::cout << "diff: " << diff_x << " " << diff_y << std::endl;
 
-        int step_x = abs(diff_x)/diff_x; 
-        int step_y = abs(diff_y)/diff_y;
+
+        int step_x = acc_x*abs(diff_x)/(diff_x + 0.1); 
+        int step_y = acc_y*abs(diff_y)/(diff_y + 0.1);
+        std::cout << step_x << " " << step_y << std::endl;
 
 
         if(abs(diff_x) > abs(diff_y)) this->pos_x += step_x;

@@ -47,20 +47,20 @@ namespace Game{
         int accy = 0;
         switch(currentDirection){
             case Direction::UP:
-                this->acc_y = -1;
+                this->acc_y = -2;
                 this->acc_x = 0;
                 break;
             case Direction::DOWN:
-                this->acc_y = 1;
+                this->acc_y = 2;
                 this->acc_x = 0;
                 break;
             case Direction::LEFT:
                 this->acc_y = 0;
-                this->acc_x = -1;
+                this->acc_x = -2;
                 break;
             case Direction::RIGHT:
                 this->acc_y = 0;
-                this->acc_x = 1;
+                this->acc_x = 2;
                 break;
         }
 

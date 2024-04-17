@@ -21,6 +21,8 @@ namespace Game{
         public:
             int size; 
             Ghost();
+            void setAx(int x);
+            void setAy(int y);
             void setX(int x);
             void setY(int y);
             int getX();

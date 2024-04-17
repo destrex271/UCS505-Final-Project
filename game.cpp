@@ -30,7 +30,16 @@ namespace Game{
         this->pacmanObj->movePacman();
 
         this->ghosts[0].renderGhost();
-        // this->ghosts[0].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+        this->ghosts[0].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+
+        this->ghosts[1].renderGhost();
+        this->ghosts[1].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+
+        this->ghosts[2].renderGhost();
+        this->ghosts[2].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+
+        this->ghosts[3].renderGhost();
+        this->ghosts[3].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
     }
 
 }

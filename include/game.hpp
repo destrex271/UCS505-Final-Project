@@ -12,7 +12,7 @@ namespace Game{
             void renderGame();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);
 
-            Ghost ghosts[3];
+            Ghost ghosts[4];
             int score;
     };
 
