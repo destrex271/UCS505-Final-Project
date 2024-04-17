@@ -8,8 +8,8 @@ namespace Game{
         acc_x=1;
         acc_y=1;
         pointsIfEaten = 100;
-        pos_x = 450;
-        pos_y = 450;
+        pos_x = 470;
+        pos_y = 470;
         size = 20;
         harmless = false;
         area_x = 30;

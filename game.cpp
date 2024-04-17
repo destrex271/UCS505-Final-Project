@@ -2,6 +2,8 @@
 #include <iostream>
 #include <GL/glut.h>
 
+#define NUM_GHOSTS 4
+
 namespace Game{
     GameObject::GameObject(int screen_height, int screen_width, int window_id){
         std::cout << "Created Game Session" << std::endl;
@@ -36,14 +38,22 @@ namespace Game{
         this->pacmanObj->drawPacman();
         this->pacmanObj->movePacman();
 
-        this->ghosts[0].renderGhost();
-        this->ghosts[0].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+        for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
 
-        this->ghosts[1].renderGhost();
-        this->ghosts[1].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+        for (int i = 0; i < NUM_GHOSTS; i++){
+            for (int j = i + 1; j < NUM_GHOSTS; j++){
+                if (this->ghosts[i].isIntersecting(this->ghosts[j])){
+                    ghosts[i].setX(ghosts[i].getX() - 10);
+                    ghosts[i].setY(ghosts[i].getY() - 10);
+                    ghosts[j].setX(ghosts[j].getX() + 10);
+                    ghosts[j].setY(ghosts[j].getY() + 10);
+                }
+            }
+        }
 
-        this->ghosts[2].renderGhost();
-        this->ghosts[2].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+        for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].renderGhost();
+        
+
 
         this->ghosts[3].renderGhost();
         this->ghosts[3].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
@@ -62,6 +72,7 @@ namespace Game{
                 this->gameOver = true;
             }
         }
+
     }
 
 }

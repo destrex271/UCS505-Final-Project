@@ -41,17 +41,22 @@ int main(int argc, char** argv){
     gameObj->ghosts[1].setY(30);
     gameObj->ghosts[1].setAx(1);
     gameObj->ghosts[1].setAy(1);
+
+    gameObj->ghosts[1].setGhostColor(1, 0.5, 0);
     
 
     gameObj->ghosts[2].setX(470);
     gameObj->ghosts[2].setY(30);
     gameObj->ghosts[2].setAx(2);
     gameObj->ghosts[2].setAy(2);
+    gameObj->ghosts[2].setGhostColor(0, 1, 1);
 
     gameObj->ghosts[3].setX(30);
     gameObj->ghosts[3].setY(470);
     gameObj->ghosts[3].setAx(2);
     gameObj->ghosts[3].setAy(2);
+    gameObj->ghosts[3].setGhostColor(1, 0.4, 0.4);
+
 
 
     Game::setGameObject(gameObj);
