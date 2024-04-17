@@ -44,6 +44,7 @@ namespace Game{
         }
     }
 
+
     void Pacman::movePacman(){
         int accx = 0;
         int accy = 0;

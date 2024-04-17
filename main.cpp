@@ -7,7 +7,10 @@
 #include <string>
 #include <iostream>
 
-#define TIMER_DELAY 10
+#define TIMER_DELAY 20
+
+#define GAME_WIDTH 500
+#define GAME_HEIGHT 500
 
 void animate(int v){
     glutPostRedisplay();
@@ -26,7 +29,7 @@ void init(){
     glClearColor(0.0, 0.0, 0.0, 1.0);
 	glPointSize(4.0);
 	glMatrixMode(GL_PROJECTION);
-	gluOrtho2D(0, 500.0, 500., 0);
+	gluOrtho2D(0, GAME_WIDTH, GAME_HEIGHT, 0);
 }
 
 // Display a simple window
@@ -35,36 +38,14 @@ int main(int argc, char** argv){
     std::string title = "Pacman";
     
 
-    int id = Game::createWindow(title.data(), 500, 500);
-    Game::GameObject* gameObj = new Game::GameObject(500, 500, id);
-    gameObj->ghosts[1].setX(30);
-    gameObj->ghosts[1].setY(30);
-    gameObj->ghosts[1].setAx(1);
-    gameObj->ghosts[1].setAy(1);
-
-    gameObj->ghosts[1].setGhostColor(1, 0.5, 0);
-    
-
-    gameObj->ghosts[2].setX(470);
-    gameObj->ghosts[2].setY(30);
-    gameObj->ghosts[2].setAx(2);
-    gameObj->ghosts[2].setAy(2);
-    gameObj->ghosts[2].setGhostColor(0, 1, 1);
-
-    gameObj->ghosts[3].setX(30);
-    gameObj->ghosts[3].setY(470);
-    gameObj->ghosts[3].setAx(2);
-    gameObj->ghosts[3].setAy(2);
-    gameObj->ghosts[3].setGhostColor(1, 0.4, 0.4);
-
-
+    int id = Game::createWindow(title.data(), GAME_WIDTH, GAME_HEIGHT);
+    Game::GameObject* gameObj = new Game::GameObject(GAME_WIDTH, GAME_HEIGHT, id);
 
     Game::setGameObject(gameObj);
 
     glutDisplayFunc(display);
     glutKeyboardFunc(Game::handleKeyboard);
     init();
-    // glutTimerFunc(1, animate, 0);
     glutMainLoop();
     return 0;
 }

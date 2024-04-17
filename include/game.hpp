@@ -10,6 +10,7 @@ namespace Game{
             GameObject(int screen_height, int screen_width, int window_id);
             void displayData();
             void renderGame();
+            void gameOverScreen();
             void checkGhostCollision();
             void quitWindow();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);

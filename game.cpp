@@ -1,4 +1,6 @@
 #include "include/game.hpp"
+#include <GL/freeglut_std.h>
+#include <GL/gl.h>
 #include <iostream>
 #include <GL/glut.h>
 
@@ -11,9 +13,45 @@ namespace Game{
         this->screen_height = screen_height;
         this->window_id = window_id;
         pacmanObj = new Pacman(screen_height, screen_width);
+
+        this->ghosts[1].setX(30);
+        this->ghosts[1].setY(30);
+        this->ghosts[1].setAx(1);
+        this->ghosts[1].setAy(1);
+
+        this->ghosts[1].setGhostColor(1, 0.5, 0);
+        
+
+        this->ghosts[2].setX(470);
+        this->ghosts[2].setY(30);
+        this->ghosts[2].setAx(2);
+        this->ghosts[2].setAy(2);
+        this->ghosts[2].setGhostColor(0, 1, 1);
+
+        this->ghosts[3].setX(30);
+        this->ghosts[3].setY(470);
+        this->ghosts[3].setAx(2);
+        this->ghosts[3].setAy(2);
+        this->ghosts[3].setGhostColor(1, 0.4, 0.4);
+
         gameOver = false;
 
         this->score = 0;
+    }
+
+    void GameObject::gameOverScreen(){
+        glColor3f(1, 1, 1);
+        std::string s = "Game Over!";
+        glRasterPos2f(250 - s.size(), 250);
+        for(auto c: s){
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, c);
+        }
+
+        s = "Press 'r' to restart and 'q' to exit!";
+        glRasterPos2f(250 - s.size() * 2, 270);
+        for(auto c: s){
+            glutBitmapCharacter(GLUT_BITMAP_8_BY_13, c);
+        }
     }
 
     void GameObject::displayData(){
@@ -31,7 +69,7 @@ namespace Game{
 
     void GameObject::renderGame(){
         if(this->gameOver){
-            quitWindow();
+            this->gameOverScreen();
             return;
         }
 
@@ -64,6 +102,7 @@ namespace Game{
     void GameObject::quitWindow(){
         glutDestroyWindow(this->window_id);
     }
+
 
     void GameObject::checkGhostCollision(){
         for(auto ghost: this->ghosts){

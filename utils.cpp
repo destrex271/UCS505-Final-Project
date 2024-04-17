@@ -60,6 +60,15 @@ namespace Game{
                 std::cout << "Exiting Game!" << std::endl;
                 gameObject->displayData();
                 quitGame();
+                break;
+            case 'r':
+            case 'R':
+                std::cout << "Restart Game!" << std::endl;
+                if(gameObject->gameOver){
+                    GameObject* j = new GameObject(500, 500, 1);
+                    setGameObject(j);
+                }
+                break;
         }
     }
 
