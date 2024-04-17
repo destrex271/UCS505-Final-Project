@@ -192,7 +192,7 @@ namespace Game{
         glBegin(GL_LINES);
         switch(dirn){
             case 0:{
-                std::cout << "LINE!" << std::endl;
+                // std::cout << "LINE!" << std::endl;
                 glVertex2f(y+x_offset, x+y_offset);
                 glVertex2f(x_offset, y_offset);
                 glVertex2f(y+x_offset, -x+y_offset);
@@ -227,16 +227,17 @@ namespace Game{
     }
 
     void Sprites::drawGhost(int radius, int h, int k, float r, float g, float b){
-        glClear(GL_COLOR_BUFFER_BIT);
+        //h and k represent the position of the sprite, radius represents the size of the sprite.
+
         glPointSize(1.0);
         glColor3f(r, g, b);
 
         int y = radius, x = 0, pi = (5/4.0) - y;
         while(x <= y){
-            drawPoint(x, y);
-            drawPoint(-x, y);
-            drawPoint(y, x);
-            drawPoint(-y, x);
+            drawPoint(-x + h, -y + k);
+            drawPoint(x + h, -y + k);
+            drawPoint(-y + h, -x + k);
+            drawPoint(y + h, -x + k);
 
             std::vector<int> coords = Circle::calc_d_MidPoint(pi, x, y);
             pi = coords[0];
@@ -244,9 +245,9 @@ namespace Game{
             y = coords[2];
         }
 
-        Line::drawLineVertical(-radius, 0, -radius, r, g, b);
-        Line::drawLineHorizontal(-radius, radius, -radius, r, g, b);
-        Line::drawLineVertical(radius, 0, -radius, r, g, b);
+        Line::drawLineVertical(radius + h, 0 + k, radius + k, r, g, b);
+        Line::drawLineHorizontal(radius + h, -radius + h, radius + k, r, g, b);
+        Line::drawLineVertical(-radius + h, 0 + k, radius + k, r, g, b);
         
         glFlush();
     }

@@ -2,7 +2,6 @@
 
 namespace Game{
     class Ghost{
-        private:
             int pos_x, pos_y;
             int screen_height, screen_width;
             bool harmless;
@@ -11,10 +10,14 @@ namespace Game{
             float color[3];
 
         public:
-
+            int size; 
             Ghost();
+            void setX(int x);
+            void setY(int y);
+            int getX();
+            int getY();
             void moveGhost(int pos_x_pacman, int pos_y_pacman);
-            void renderGhost(int radius = 200, int h = 0, int k = 0, float r = 1.0, float g = 0.0, float b = 0.0);
+            void renderGhost();
             void setHarmless(bool state);
             void setGhostColor(float r, float g, float b);
             std::vector<float> getGhostColor();
