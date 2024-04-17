@@ -1,6 +1,5 @@
 #include "include/game.hpp"
 #include <iostream>
-#include <vector>
 
 namespace Game{
     GameObject::GameObject(int screen_height, int screen_width){
@@ -30,10 +29,8 @@ namespace Game{
         this->pacmanObj->drawPacman();
         this->pacmanObj->movePacman();
 
-        // Ghost blinky = this->ghosts[0];
-        // std::vector<float> colors = blinky.getGhostColor();
-        // blinky.renderGhost(200, 0, 0, colors[0], colors[1], colors[2]);
-
+        this->ghosts[0].renderGhost();
+        // this->ghosts[0].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
     }
 
 }

@@ -26,7 +26,7 @@ void init(){
     glClearColor(0.0, 0.0, 0.0, 1.0);
 	glPointSize(4.0);
 	glMatrixMode(GL_PROJECTION);
-	gluOrtho2D(0, 500.0, 500, 0);
+	gluOrtho2D(0, 500.0, 500., 0);
 }
 
 // Display a simple window
@@ -43,7 +43,7 @@ int main(int argc, char** argv){
     glutDisplayFunc(display);
     glutKeyboardFunc(Game::handleKeyboard);
     init();
-    glutTimerFunc(1, animate, 0);
+    // glutTimerFunc(1, animate, 0);
     glutMainLoop();
     return 0;
 }

@@ -1,5 +1,4 @@
 #include "pacman.hpp"
-#include "ghost.hpp"
 
 namespace Game{
     class GameObject{
@@ -13,7 +12,7 @@ namespace Game{
             void renderGame();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);
 
-            Ghost ghosts[1];
+            Ghost ghosts[3];
             int score;
     };
 

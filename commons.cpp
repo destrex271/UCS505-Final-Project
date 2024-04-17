@@ -16,9 +16,9 @@ namespace Game{
     }
 
     Boundary BoxObject::hitBoundary(){
-        std::cout << "Current X-Left: " << this->pos_x - area_x << "Current X-Right: " << this->pos_x + area_x << std::endl;
-        std::cout << "Current Y-TOP: " << this->pos_y - area_y << "Current Y-Bottom: " << this->pos_y + area_y << std::endl;
-        std::cout << "Screen width: " << this->screen_width << "Screen Height: " << this->screen_height << std::endl;
+        // std::cout << "Current X-Left: " << this->pos_x - area_x << "Current X-Right: " << this->pos_x + area_x << std::endl;
+        // std::cout << "Current Y-TOP: " << this->pos_y - area_y << "Current Y-Bottom: " << this->pos_y + area_y << std::endl;
+        // std::cout << "Screen width: " << this->screen_width << "Screen Height: " << this->screen_height << std::endl;
         if(this->pos_x - area_x <= 0){
             std::cout << "Hit left" << std::endl;
             return Boundary::LSIDE;
@@ -37,7 +37,7 @@ namespace Game{
 
     void BoxObject::checkCollisions(){
         auto stat = this->hitBoundary();
-        std::cout << "Check stat: " << stat << std::endl;
+        // std::cout << "Check stat: " << stat << std::endl;
         switch(stat){
             case Boundary::RSIDE:
                 std::cout << "HIT RIGHT BOUND" << std::endl;

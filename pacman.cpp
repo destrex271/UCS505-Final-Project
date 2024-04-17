@@ -64,12 +64,12 @@ namespace Game{
                 break;
         }
 
-        std::cout << "IN MOVE PACMAN: ";
-        std::cout << this->acc_x << " " << this->acc_y << std::endl;
+        // std::cout << "IN MOVE PACMAN: ";
+        // std::cout << this->acc_x << " " << this->acc_y << std::endl;
         this->checkCollisions();
 
-        std::cout << "AFTER: IN MOVE PACMAN: ";
-        std::cout << this->acc_x << " " << this->acc_y << std::endl;
+        // std::cout << "AFTER: IN MOVE PACMAN: ";
+        // std::cout << this->acc_x << " " << this->acc_y << std::endl;
         this->pos_x += this->acc_x;
         this->pos_y += this->acc_y;
     }
