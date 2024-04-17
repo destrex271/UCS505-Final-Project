@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 
-#define TIMER_DELAY 5
+#define TIMER_DELAY 10
 
 void animate(int v){
     glutPostRedisplay();
@@ -35,27 +35,27 @@ int main(int argc, char** argv){
     std::string title = "Pacman";
     
 
-    Game::GameObject* gameObj = new Game::GameObject(500, 500);
+    int id = Game::createWindow(title.data(), 500, 500);
+    Game::GameObject* gameObj = new Game::GameObject(500, 500, id);
     gameObj->ghosts[1].setX(30);
     gameObj->ghosts[1].setY(30);
-    gameObj->ghosts[1].setAx(2);
-    gameObj->ghosts[1].setAy(2);
+    gameObj->ghosts[1].setAx(1);
+    gameObj->ghosts[1].setAy(1);
     
 
     gameObj->ghosts[2].setX(470);
     gameObj->ghosts[2].setY(30);
-    gameObj->ghosts[2].setAx(3);
-    gameObj->ghosts[2].setAy(3);
+    gameObj->ghosts[2].setAx(2);
+    gameObj->ghosts[2].setAy(2);
 
     gameObj->ghosts[3].setX(30);
     gameObj->ghosts[3].setY(470);
-    gameObj->ghosts[3].setAx(4);
-    gameObj->ghosts[3].setAy(4);
+    gameObj->ghosts[3].setAx(2);
+    gameObj->ghosts[3].setAy(2);
 
 
     Game::setGameObject(gameObj);
 
-    Game::createWindow(title.data(), 500, 500);
     glutDisplayFunc(display);
     glutKeyboardFunc(Game::handleKeyboard);
     init();

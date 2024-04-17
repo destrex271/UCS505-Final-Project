@@ -59,7 +59,7 @@ namespace Game{
                 return;
         }
 
-        std::cout << "IN CC: ";
-        std::cout << this->acc_x << " " << this->acc_y << std::endl;
+        /* std::cout << "IN CC: "; */
+        /* std::cout << this->acc_x << " " << this->acc_y << std::endl; */
     }
 }

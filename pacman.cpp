@@ -2,6 +2,8 @@
 #include <iostream>
 #include "include/shapes.hpp"
 
+#define PAC_ACC 7
+
 namespace Game{
     // Pacman Object
     Pacman::Pacman(int screen_height, int screen_width){
@@ -47,20 +49,20 @@ namespace Game{
         int accy = 0;
         switch(currentDirection){
             case Direction::UP:
-                this->acc_y = -2;
+                this->acc_y = -PAC_ACC;
                 this->acc_x = 0;
                 break;
             case Direction::DOWN:
-                this->acc_y = 2;
+                this->acc_y = PAC_ACC;
                 this->acc_x = 0;
                 break;
             case Direction::LEFT:
                 this->acc_y = 0;
-                this->acc_x = -2;
+                this->acc_x = -PAC_ACC;
                 break;
             case Direction::RIGHT:
                 this->acc_y = 0;
-                this->acc_x = 2;
+                this->acc_x = PAC_ACC;
                 break;
         }
 

@@ -1,11 +1,13 @@
 #include "include/game.hpp"
 #include <iostream>
+#include <GL/glut.h>
 
 namespace Game{
-    GameObject::GameObject(int screen_height, int screen_width){
+    GameObject::GameObject(int screen_height, int screen_width, int window_id){
         std::cout << "Created Game Session" << std::endl;
         this->screen_width = screen_width;
         this->screen_height = screen_height;
+        this->window_id = window_id;
         pacmanObj = new Pacman(screen_height, screen_width);
         gameOver = false;
 
@@ -26,6 +28,11 @@ namespace Game{
     }
 
     void GameObject::renderGame(){
+        if(this->gameOver){
+            quitWindow();
+            return;
+        }
+
         this->pacmanObj->drawPacman();
         this->pacmanObj->movePacman();
 
@@ -40,6 +47,21 @@ namespace Game{
 
         this->ghosts[3].renderGhost();
         this->ghosts[3].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+
+        this->checkGhostCollision();
+    }
+
+    void GameObject::quitWindow(){
+        glutDestroyWindow(this->window_id);
+    }
+
+    void GameObject::checkGhostCollision(){
+        for(auto ghost: this->ghosts){
+            bool ok = this->pacmanObj->isIntersecting(ghost);
+            if(ok){
+                this->gameOver = true;
+            }
+        }
     }
 
 }

@@ -5,18 +5,19 @@ namespace Game{
         public:
             Pacman* pacmanObj;
             // Max Possible Size 300, 300
-            int screen_height, screen_width;
+            int screen_height, screen_width, window_id;
             bool gameOver; // If true terminate everything
-            GameObject(int screen_height, int screen_width);
+            GameObject(int screen_height, int screen_width, int window_id);
             void displayData();
             void renderGame();
+            void checkGhostCollision();
+            void quitWindow();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);
 
             Ghost ghosts[4];
             int score;
     };
 
-    
-
     void drawGameGrid();
+
 }

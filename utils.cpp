@@ -10,11 +10,12 @@
 
 namespace Game{
     int windowId;
-    void createWindow(char* title, int WIDTH, int HEIGHT){
+    int createWindow(char* title, int WIDTH, int HEIGHT){
         std::cout << "Creating Window" << std::endl;
         windowId = glutCreateWindow(title);
         std::cout << "Created Window" << WIDTH << " " << HEIGHT << std::endl;
         glutInitWindowSize(WIDTH, HEIGHT);
+        return windowId;
     }
 
     Game::GameObject* gameObject;
