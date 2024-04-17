@@ -10,10 +10,10 @@ namespace Game{
         pointsIfEaten = 100;
         pos_x = 470;
         pos_y = 470;
-        size = 20;
+        size = 15;
         harmless = false;
-        area_x = 30;
-        area_y = 30;
+        area_x = 20;
+        area_y = 20;
         color[0] = 1.; 
         color[1] = 0.;
         color[2] = 0.;
@@ -66,7 +66,6 @@ namespace Game{
         int diff_x =  pos_x_pacman - this->pos_x;
         int diff_y = pos_y_pacman - this->pos_y;
 
-        std::cout << "diff: " << diff_x << " " << diff_y << std::endl;
 
 
         int step_x = acc_x*abs(diff_x)/(diff_x + 0.1); 
@@ -86,4 +85,5 @@ namespace Game{
 
         Sprites::drawGhost(size, pos_x, pos_y, color[0], color[1], color[2]);
     }
+
 }
