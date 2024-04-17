@@ -1,16 +1,17 @@
-#include "include/ghost.hpp"
+#include "include/pacman.hpp"
 #include "include/shapes.hpp"
 #include <iostream>
 
 namespace Game{
     
     Ghost::Ghost(){
-        this->pointsIfEaten = 100;
-        this->pos_x = 450;
-        this->pos_y = 450;
-        this->size = 20;
-        // std::cout << "Here" << std::endl;
-        this->harmless = false;
+        pointsIfEaten = 100;
+        pos_x = 450;
+        pos_y = 450;
+        size = 20;
+        harmless = false;
+        area_x = 30;
+        area_y = 30;
         color[0] = 1.; 
         color[1] = 0.;
         color[2] = 0.;

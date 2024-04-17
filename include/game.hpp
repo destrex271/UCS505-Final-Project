@@ -1,5 +1,4 @@
 #include "pacman.hpp"
-#include "ghost.hpp"
 
 namespace Game{
     class GameObject{

@@ -15,7 +15,7 @@ utils.o: utils.cpp $(INC_DIR)/utils.hpp
 pacman.o: pacman.cpp $(INC_DIR)/pacman.hpp
 	$(CC) -c pacman.cpp -I$(INC_DIR) $(DFLAGS)
 
-ghost.o: ghost.cpp $(INC_DIR)/ghost.hpp
+ghost.o: ghost.cpp $(INC_DIR)/pacman.hpp
 	$(CC) -c ghost.cpp -I$(INC_DIR) $(DFLAGS)
 
 game.o: game.cpp $(INC_DIR)/game.hpp
