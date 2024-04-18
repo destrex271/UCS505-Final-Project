@@ -1,12 +1,12 @@
-#include "include/pacman.hpp"
+#include "include/pirahna.hpp"
 #include <iostream>
 #include "include/shapes.hpp"
 
 #define PAC_ACC 7
 
 namespace Game{
-    // Pacman Object
-    Pacman::Pacman(int screen_height, int screen_width){
+    // Pirhana Object
+    Pirahna::Pirahna(int screen_height, int screen_width){
         this->setDirection(Direction::RIGHT);
         this->screen_width = screen_width;
         this->screen_height = screen_height;
@@ -17,12 +17,12 @@ namespace Game{
         this->area_y = 30;
     }
 
-    void Pacman::setDirection(Direction dirn){
+    void Pirahna::setDirection(Direction dirn){
         this->currentDirection = dirn;
         std::cout << "Direction set to " << dirn << std::endl;
     }
 
-    void Pacman::drawPacman(){
+    void Pirahna::drawPirahna(){
         // OpenGL commands to draw a circle or load a pacman sprite
         /* std::cout << "Drawing pacman: " << pos_x << " " << pos_y << std::endl; */
         switch(this->currentDirection){
@@ -45,7 +45,7 @@ namespace Game{
     }
 
 
-    void Pacman::movePacman(){
+    void Pirahna::movePirahna(){
         int accx = 0;
         int accy = 0;
         switch(currentDirection){

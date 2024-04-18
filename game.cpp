@@ -12,27 +12,27 @@ namespace Game{
         this->screen_width = screen_width;
         this->screen_height = screen_height;
         this->window_id = window_id;
-        pacmanObj = new Pacman(screen_height, screen_width);
+        pirahnaObj = new Pirahna(screen_height, screen_width);
 
         this->ghosts[1].setX(30);
         this->ghosts[1].setY(30);
         this->ghosts[1].setAx(1);
         this->ghosts[1].setAy(1);
 
-        this->ghosts[1].setGhostColor(1, 0.5, 0);
+        this->ghosts[1].setNetColor(1, 0.5, 0);
         
 
         this->ghosts[2].setX(470);
         this->ghosts[2].setY(30);
         this->ghosts[2].setAx(2);
         this->ghosts[2].setAy(2);
-        this->ghosts[2].setGhostColor(0, 1, 1);
+        this->ghosts[2].setNetColor(0, 1, 1);
 
         this->ghosts[3].setX(30);
         this->ghosts[3].setY(470);
         this->ghosts[3].setAx(2);
         this->ghosts[3].setAy(2);
-        this->ghosts[3].setGhostColor(1, 0.4, 0.4);
+        this->ghosts[3].setNetColor(1, 0.4, 0.4);
 
         gameOver = false;
 
@@ -73,10 +73,10 @@ namespace Game{
             return;
         }
 
-        this->pacmanObj->drawPacman();
-        this->pacmanObj->movePacman();
+        this->pirahnaObj->drawPirahna();
+        this->pirahnaObj->movePirahna();
 
-        for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+        for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].moveNet(this->pirahnaObj->pos_x, this->pirahnaObj->pos_y);
 
         for (int i = 0; i < NUM_GHOSTS; i++){
             for (int j = i + 1; j < NUM_GHOSTS; j++){
@@ -89,14 +89,14 @@ namespace Game{
             }
         }
 
-        for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].renderGhost();
+        for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].renderNet();
         
 
 
-        this->ghosts[3].renderGhost();
-        this->ghosts[3].moveGhost(this->pacmanObj->pos_x, this->pacmanObj->pos_y);
+        this->ghosts[3].renderNet();
+        this->ghosts[3].moveNet(this->pirahnaObj->pos_x, this->pirahnaObj->pos_y);
 
-        this->checkGhostCollision();
+        this->checkNetCollision();
 
         //function to update pellet counts
     }
@@ -106,9 +106,9 @@ namespace Game{
     }
 
 
-    void GameObject::checkGhostCollision(){
+    void GameObject::checkNetCollision(){
         for(auto ghost: this->ghosts){
-            bool ok = this->pacmanObj->isIntersecting(ghost);
+            bool ok = this->pirahnaObj->isIntersecting(ghost);
             if(ok){
                 this->gameOver = true;
             }

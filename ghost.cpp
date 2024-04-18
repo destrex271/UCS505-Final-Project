@@ -1,10 +1,10 @@
-#include "include/pacman.hpp"
+#include "include/pirahna.hpp"
 #include "include/shapes.hpp"
 #include <iostream>
 
 namespace Game{
     
-    Ghost::Ghost(){
+    Net::Net(){
         acc_x=1;
         acc_y=1;
         pointsIfEaten = 100;
@@ -19,46 +19,46 @@ namespace Game{
         color[2] = 0.;
     }
 
-    void Ghost::setX(int x){
+    void Net::setX(int x){
         this->pos_x = x;
     }
 
-    void Ghost::setY(int y){
+    void Net::setY(int y){
         this->pos_y = y;
     }
 
-    int Ghost::getX(){
+    int Net::getX(){
        return this->pos_x;
     }
 
-    int Ghost::getY(){
+    int Net::getY(){
         return this->pos_y;
     }
 
-    void Ghost::setAx(int acc_x){
+    void Net::setAx(int acc_x){
         this->acc_x = acc_x;
     }
 
-    void Ghost::setAy(int acc_y){
+    void Net::setAy(int acc_y){
         this->acc_y = acc_y;
     }
-    void Ghost::setGhostColor(float r, float g, float b){
+    void Net::setNetColor(float r, float g, float b){
         color[0] = r;
         color[1] = g;
         color[2] = b;
     }
 
-    std::vector<float> Ghost::getGhostColor(){
+    std::vector<float> Net::getNetColor(){
         return {color[0], color[1], color[2]};
     }
 
-    void Ghost::setHarmless(bool state){
+    void Net::setHarmless(bool state){
         this->harmless = state;
         //setting a timer of ten seconds, not used right now
         this->timeLeftHarmless = 10;
     }
 
-    void Ghost::moveGhost(int pos_x_pacman, int pos_y_pacman){
+    void Net::moveNet(int pos_x_pacman, int pos_y_pacman){
         //Might change in the future;
        
         // std::cout << "BEFORE" << std::endl;
@@ -79,11 +79,11 @@ namespace Game{
         // std::cout << this->pos_x << " " << this->pos_y << std::endl;
     }
 
-    void Ghost::renderGhost(){
+    void Net::renderNet(){
 
         // std::cout << "Drawing ghost..." << std::endl;
 
-        Sprites::drawGhost(size, pos_x, pos_y, color[0], color[1], color[2]);
+        Sprites::drawNet(size, pos_x, pos_y, color[0], color[1], color[2]);
     }
 
 }

@@ -3,13 +3,13 @@
 
 namespace Game{
     
-    class Pacman: public BoxObject{
+    class Pirahna: public BoxObject{
         public:
             int color[3];
-            Pacman(int screen_height, int screen_width);
-            void movePacman();
+            Pirahna(int screen_height, int screen_width);
+            void movePirahna();
             void setDirection(Direction dirn);
-            void drawPacman();
+            void drawPirahna();
     };
 
     class Food: public BoxObject{
@@ -18,7 +18,7 @@ namespace Game{
             void drawFood();
     };
 
-    class Ghost: public BoxObject{
+    class Net: public BoxObject{
             bool harmless;
             int timeLeftHarmless;
             int pointsIfEaten;
@@ -26,17 +26,17 @@ namespace Game{
 
         public:
             int size; 
-            Ghost();
+            Net();
             void setAx(int x);
             void setAy(int y);
             void setX(int x);
             void setY(int y);
             int getX();
             int getY();
-            void moveGhost(int pos_x_pacman, int pos_y_pacman);
-            void renderGhost();
+            void moveNet(int pos_x_pacman, int pos_y_pacman);
+            void renderNet();
             void setHarmless(bool state);
-            void setGhostColor(float r, float g, float b);
-            std::vector<float> getGhostColor();
+            void setNetColor(float r, float g, float b);
+            std::vector<float> getNetColor();
     };
 }

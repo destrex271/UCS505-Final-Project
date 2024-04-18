@@ -1,9 +1,9 @@
-#include "pacman.hpp"
+#include "pirahna.hpp"
 
 namespace Game{
     class GameObject{
         public:
-            Pacman* pacmanObj;
+            Pirahna* pirahnaObj;
             std::vector<Food> food;
             // Max Possible Size 300, 300
             int screen_height, screen_width, window_id;
@@ -12,11 +12,11 @@ namespace Game{
             void displayData();
             void renderGame();
             void gameOverScreen();
-            void checkGhostCollision();
+            void checkNetCollision();
             void quitWindow();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);
 
-            Ghost ghosts[4];
+            Net ghosts[4];
             int score;
     };
 

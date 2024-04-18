@@ -26,6 +26,6 @@ namespace Game{
     }
 
     namespace Sprites{
-        void drawGhost(int radius = 200, int h = 0, int k = 0, float r = 1., float g = 0., float b = 0.);
+        void drawNet(int radius = 200, int h = 0, int k = 0, float r = 1., float g = 0., float b = 0.);
     }
 }

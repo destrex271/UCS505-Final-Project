@@ -35,25 +35,25 @@ namespace Game{
             case 'W':
                 std::cout << "UP" << std::endl;
                 gameObject->displayData();
-                gameObject->pacmanObj->setDirection(Direction::UP);
+                gameObject->pirahnaObj->setDirection(Direction::UP);
                 break;
             case 'a':
             case 'A':
                 std::cout << "LEFT" << std::endl;
                 gameObject->displayData();
-                gameObject->pacmanObj->setDirection(Direction::LEFT);
+                gameObject->pirahnaObj->setDirection(Direction::LEFT);
                 break;
             case 'd':
             case 'D':
                 std::cout << "RIGHT" << std::endl;
                 gameObject->displayData();
-                gameObject->pacmanObj->setDirection(Direction::RIGHT);
+                gameObject->pirahnaObj->setDirection(Direction::RIGHT);
                 break;
             case 's':
             case 'S':
                 std::cout << "DOWN" << std:: endl;
                 gameObject->displayData();
-                gameObject->pacmanObj->setDirection(Direction::DOWN);
+                gameObject->pirahnaObj->setDirection(Direction::DOWN);
                 break;
             case 'q':
             case 'Q':

@@ -226,7 +226,7 @@ namespace Game{
         glFlush();
     }
 
-    void Sprites::drawGhost(int radius, int h, int k, float r, float g, float b){
+    void Sprites::drawNet(int radius, int h, int k, float r, float g, float b){
         //h and k represent the position of the sprite, radius represents the size of the sprite.
 
         glPointSize(1.0);
