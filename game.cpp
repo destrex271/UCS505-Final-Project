@@ -68,6 +68,8 @@ namespace Game{
         this->pirahnaObj->drawPirahna();
         this->pirahnaObj->movePirahna();
 
+        this->khana->drawFood();        
+
         for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].moveNet(this->pirahnaObj->pos_x, this->pirahnaObj->pos_y);
 
         for (int i = 0; i < NUM_GHOSTS; i++){

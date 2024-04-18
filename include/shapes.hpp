@@ -13,7 +13,7 @@ namespace Game{
         void drawPacmanCircle(int radius, int x_offset, int y_offset, int dirn);
         void drawCircle(int radius, int x_offset, int y_offset);
         void drawSemicircle(int radius, int x_offset, int y_offset, float r = 1, float g = 0, float b = 0);
-
+        void drawFood(int x_offset, int y_offset);
     }
 
     namespace Line{
