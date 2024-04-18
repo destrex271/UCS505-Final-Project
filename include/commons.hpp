@@ -24,6 +24,6 @@ namespace Game{
 
             Boundary hitBoundary();
 
-            void checkCollisions();
+            virtual void checkCollisions() = 0;
     };
 }
