@@ -18,6 +18,9 @@ namespace Game{
 
             Net ghosts[4];
             int score;
+
+            Food* khana = new Food(150,150);            
+
     };
 
     void drawGameGrid();

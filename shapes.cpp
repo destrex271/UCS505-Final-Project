@@ -251,4 +251,29 @@ namespace Game{
         
         glFlush();
     }
+            void Circle::drawFood(int x_offset, int y_offset){
+        // glClear(GL_COLOR_BUFFER_BIT);
+        glColor3f(0.5, 0.25, 0.25);
+        glPointSize(2.0);
+        int y = 7, x = 0, pi = (5/4.0) - y;
+        while(x <= y){
+            // Draw points
+            glColor3f(1.0f, 1.0f, 1.0f);
+            drawPoint(x+x_offset, y+y_offset);
+            drawPoint(x+x_offset, -y+y_offset);
+            drawPoint(-x+x_offset, y+y_offset);
+            drawPoint(-x+x_offset, -y+y_offset);
+            drawPoint(y+x_offset, x+y_offset);
+            drawPoint(y+x_offset, -x+y_offset);
+            drawPoint(-y+x_offset, x+y_offset);
+            drawPoint(-y+x_offset, -x+y_offset);
+
+            std::vector<int> coords = Circle::calc_d_MidPoint(pi, x, y);
+            pi = coords[0];
+            x = coords[1];
+            y = coords[2];
+        }
+        glEnd();
+        glFlush();
+    }
 }
