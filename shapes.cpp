@@ -93,7 +93,7 @@ namespace Game{
 
 
     void Circle::drawCircle(int radius, int x_offset, int y_offset){
-        glClear(GL_COLOR_BUFFER_BIT);
+        /* glClear(GL_COLOR_BUFFER_BIT); */
         glPointSize(1.0);
         int y = radius, x = 0, pi = (5/4.0) - y;
         while(x <= y){
@@ -130,7 +130,7 @@ namespace Game{
     }
 
     void Circle::drawPacmanCircle(int radius, int x_offset, int y_offset,  int dirn){
-        glClear(GL_COLOR_BUFFER_BIT);
+        /* glClear(GL_COLOR_BUFFER_BIT); */
         int y = radius, x = 0, pi = (5/4.0) - y;
         std::vector<std::pair<int, int>> points;
         while(x <= y){

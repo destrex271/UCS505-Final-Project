@@ -70,7 +70,6 @@ namespace Game{
 
         int step_x = acc_x*abs(diff_x)/(diff_x + 0.1); 
         int step_y = acc_y*abs(diff_y)/(diff_y + 0.1);
-        std::cout << step_x << " " << step_y << std::endl;
 
 
         if(abs(diff_x) > abs(diff_y)) this->pos_x += step_x;
