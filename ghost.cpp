@@ -8,8 +8,8 @@ namespace Game{
         acc_x=1;
         acc_y=1;
         pointsIfEaten = 100;
-        pos_x = 470;
-        pos_y = 470;
+        pos_x = 20;
+        pos_y = 20;
         size = 15;
         harmless = false;
         area_x = 20;
@@ -66,10 +66,10 @@ namespace Game{
         int diff_x =  pos_x_pacman - this->pos_x;
         int diff_y = pos_y_pacman - this->pos_y;
 
-
-
         int step_x = acc_x*abs(diff_x)/(diff_x + 0.1); 
-        int step_y = acc_y*abs(diff_y)/(diff_y + 0.1);
+
+        int step_y = acc_y;
+
 
 
         if(abs(diff_x) > abs(diff_y)) this->pos_x += step_x;
@@ -83,6 +83,23 @@ namespace Game{
         // std::cout << "Drawing ghost..." << std::endl;
 
         Sprites::drawNet(size, pos_x, pos_y, color[0], color[1], color[2]);
+    }
+
+    void Net::checkCollisions(){
+        auto bound = hitBoundary();
+
+        switch(bound){
+            case Boundary::TOP:
+                std::cout << "HIT TOP BOUND" << std::endl;
+                this->acc_y *= -1;
+                break;
+            case Boundary::BOTTOM:
+                std::cout << "HIT BOTTOM BOUND" << std::endl;
+                this->acc_y *= -1;
+                break;
+            case Boundary::NONE:
+                return;
+        }
     }
 
 }

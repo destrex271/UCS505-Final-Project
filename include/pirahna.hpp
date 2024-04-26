@@ -10,13 +10,9 @@ namespace Game{
             void movePirahna();
             void setDirection(Direction dirn);
             void drawPirahna();
+            void checkCollisions();
     };
 
-    class Food: public BoxObject{
-        public:
-            Food(int pos_x, int pos_y);
-            void drawFood();
-    };
 
     class Net: public BoxObject{
             bool harmless;
@@ -38,5 +34,16 @@ namespace Game{
             void setHarmless(bool state);
             void setNetColor(float r, float g, float b);
             std::vector<float> getNetColor();
+            void checkCollisions();
+    };
+
+    class Food : public BoxObject{
+        int x_offset;
+        int y_offset;
+        public:
+            Food(int x_offset,int y_offset);
+            void drawFood();
+            // void checkCollisions();
+
     };
 }

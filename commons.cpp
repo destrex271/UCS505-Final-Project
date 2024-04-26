@@ -35,31 +35,4 @@ namespace Game{
         return Boundary::NONE;
     }
 
-    void BoxObject::checkCollisions(){
-        auto stat = this->hitBoundary();
-        // std::cout << "Check stat: " << stat << std::endl;
-        switch(stat){
-            case Boundary::RSIDE:
-                std::cout << "HIT RIGHT BOUND" << std::endl;
-                this->currentDirection = Direction::LEFT;
-                break;
-            case Boundary::LSIDE:
-                std::cout << "HIT LEFT BOUND" << std::endl;
-                this->currentDirection = Direction::RIGHT;
-                break;
-            case Boundary::TOP:
-                std::cout << "HIT TOP BOUND" << std::endl;
-                this->currentDirection = Direction::DOWN;
-                break;
-            case Boundary::BOTTOM:
-                std::cout << "HIT BOTTOM BOUND" << std::endl;
-                this->currentDirection = Direction::UP;
-                break;
-            case Boundary::NONE:
-                return;
-        }
-
-        /* std::cout << "IN CC: "; */
-        /* std::cout << this->acc_x << " " << this->acc_y << std::endl; */
-    }
 }

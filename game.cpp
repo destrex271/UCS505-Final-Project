@@ -15,24 +15,16 @@ namespace Game{
         this->window_id = window_id;
         pirahnaObj = new Pirahna(screen_height, screen_width);
 
-        this->ghosts[1].setX(30);
-        this->ghosts[1].setY(30);
-        this->ghosts[1].setAx(1);
-        this->ghosts[1].setAy(1);
+        for (int i = 1; i < NUM_GHOSTS; i++){
+            this->ghosts[i].setX(screen_width/NUM_GHOSTS * i);
+            this->ghosts[i].setY(30);
 
-        this->ghosts[1].setNetColor(1, 0.5, 0);
+            this->ghosts[i].setAx(i);
+            this->ghosts[i].setAy(i);
+        }
         
-
-        this->ghosts[2].setX(470);
-        this->ghosts[2].setY(30);
-        this->ghosts[2].setAx(2);
-        this->ghosts[2].setAy(2);
+        this->ghosts[1].setNetColor(1, 0.5, 0);
         this->ghosts[2].setNetColor(0, 1, 1);
-
-        this->ghosts[3].setX(30);
-        this->ghosts[3].setY(470);
-        this->ghosts[3].setAx(2);
-        this->ghosts[3].setAy(2);
         this->ghosts[3].setNetColor(1, 0.4, 0.4);
 
         gameOver = false;
@@ -92,6 +84,8 @@ namespace Game{
 
         this->pirahnaObj->drawPirahna();
         this->pirahnaObj->movePirahna();
+
+        this->khana->drawFood();        
 
         for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].moveNet(this->pirahnaObj->pos_x, this->pirahnaObj->pos_y);
 
