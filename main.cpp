@@ -19,7 +19,7 @@ void animate(int v){
 void display(){
     glutTimerFunc(TIMER_DELAY, animate, 0);
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Background Color -> Black
-    glClear(GL_COLOR_BUFFER_BIT);
+    /* glClear(GL_COLOR_BUFFER_BIT); */
     Game::drawGame();
     glFlush();
 }

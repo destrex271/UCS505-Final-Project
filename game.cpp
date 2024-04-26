@@ -1,6 +1,7 @@
 #include "include/game.hpp"
 #include <GL/freeglut_std.h>
 #include <GL/gl.h>
+#include <GL/glu.h>
 #include <iostream>
 #include <GL/glut.h>
 
@@ -46,6 +47,21 @@ namespace Game{
         }
     }
 
+    void GameObject::drawWorld(){
+        glClear(GL_COLOR_BUFFER_BIT);
+        this->water_del *= -1;
+        for(int y = 10; y < this->screen_height; y+=15){
+            for(int x = 10; x < this->screen_width; x+=15){
+                std::cout << "Drawing" << std::endl;
+                glColor4f(0.3, 0.6, 1.0, 0.0);
+                glBegin(GL_LINES);
+                glVertex2f(x-4 - water_del, y - water_del);
+                glVertex2f(x+4 + water_del, y + water_del);
+                glEnd();
+            }
+        }
+    }
+
     void GameObject::displayData(){
         std::cout << "===============================" << std::endl;
         std::cout << "Game Details: " << std::endl;
@@ -60,6 +76,7 @@ namespace Game{
     }
 
     void GameObject::renderGame(){
+        this->drawWorld();
         if(this->gameOver){
             this->gameOverScreen();
             return;

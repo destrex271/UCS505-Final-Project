@@ -67,8 +67,9 @@ namespace Game{
         int diff_y = pos_y_pacman - this->pos_y;
 
         int step_x = acc_x*abs(diff_x)/(diff_x + 0.1); 
+
         int step_y = acc_y;
-        std::cout << step_x << " " << step_y << std::endl;
+
 
 
         if(abs(diff_x) > abs(diff_y)) this->pos_x += step_x;

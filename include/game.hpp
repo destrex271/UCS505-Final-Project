@@ -5,6 +5,7 @@ namespace Game{
         public:
             Pirahna* pirahnaObj;
             std::vector<Food> food;
+            float water_del = 0.5;
             // Max Possible Size 300, 300
             int screen_height, screen_width, window_id;
             bool gameOver; // If true terminate everything
@@ -15,6 +16,7 @@ namespace Game{
             void checkNetCollision();
             void quitWindow();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);
+            void drawWorld();
 
             Net ghosts[4];
             int score;

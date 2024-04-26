@@ -1,4 +1,5 @@
 #include "include/shapes.hpp"
+#include "math.h"
 #include <GL/gl.h>
 #include <algorithm>
 #include <iostream>
@@ -28,12 +29,11 @@ namespace Game{
 
     void drawPoints(std::vector<std::pair<int, int>>& points){
         glPointSize(1.0);
-        glBegin(GL_POINTS);
+        glBegin(GL_TRIANGLE_FAN);
         for(auto point: points){
             glVertex2f(point.first, point.second);
         }
         glEnd();
-        glFlush();
     }
 
     void drawPolygon(std::vector<std::pair<int, int>> points){
@@ -93,7 +93,7 @@ namespace Game{
 
 
     void Circle::drawCircle(int radius, int x_offset, int y_offset){
-        glClear(GL_COLOR_BUFFER_BIT);
+        /* glClear(GL_COLOR_BUFFER_BIT); */
         glPointSize(1.0);
         int y = radius, x = 0, pi = (5/4.0) - y;
         while(x <= y){
@@ -130,12 +130,12 @@ namespace Game{
     }
 
     void Circle::drawPacmanCircle(int radius, int x_offset, int y_offset,  int dirn){
-        glClear(GL_COLOR_BUFFER_BIT);
+        /* glClear(GL_COLOR_BUFFER_BIT); */
         int y = radius, x = 0, pi = (5/4.0) - y;
         std::vector<std::pair<int, int>> points;
         while(x <= y){
             // Draw points
-            glColor3f(1.0f, 1.0f, 1.0f);
+            glColor3f(0.3, 0.9, 0.4);
             switch(dirn){
                 case 1: { // RIGHT FACE
                     points.push_back({x + x_offset, y + y_offset});
@@ -149,29 +149,23 @@ namespace Game{
                 case 0: { // LEFT FACE
                     points.push_back({x + x_offset, y + y_offset});
                     points.push_back({x + x_offset, -y + y_offset});
-                    points.push_back({-x + x_offset, y + y_offset});
-                    points.push_back({-x + x_offset, -y + y_offset});
-                    /* points.push_back({y + x_offset, x + y_offset}); */
-                    /* points.push_back({y + x_offset, -x + y_offset}); */
                     points.push_back({-y + x_offset, -x + y_offset});
                     points.push_back({-y + x_offset, x + y_offset});
+                    points.push_back({-x + x_offset, y + y_offset});
+                    points.push_back({-x + x_offset, -y + y_offset});
                     break;
                 }
                 case 2:{
-                    points.push_back({x + x_offset, y + y_offset});
-                    /* points.push_back({x + x_offset, -y + y_offset}); */
-                    points.push_back({-x + x_offset, y + y_offset});
-                    /* points.push_back({-x + x_offset, -y + y_offset}); */
-                    points.push_back({y + x_offset, x + y_offset});
-                    points.push_back({y + x_offset, -x + y_offset});
                     points.push_back({-y + x_offset, -x + y_offset});
                     points.push_back({-y + x_offset, x + y_offset});
+                    points.push_back({x + x_offset, y + y_offset});
+                    points.push_back({-x + x_offset, y + y_offset});
+                    points.push_back({y + x_offset, x + y_offset});
+                    points.push_back({y + x_offset, -x + y_offset});
                     break;
                 }
                 case 3:{
-                    /* points.push_back({x + x_offset, y + y_offset}); */
                     points.push_back({x + x_offset, -y + y_offset});
-                    /* points.push_back({-x + x_offset, y + y_offset}); */
                     points.push_back({-x + x_offset, -y + y_offset});
                     points.push_back({y + x_offset, x + y_offset});
                     points.push_back({y + x_offset, -x + y_offset});
@@ -189,40 +183,50 @@ namespace Game{
 
         drawPoints(points);
 
-        glBegin(GL_LINES);
         switch(dirn){
             case 0:{
-                // std::cout << "LINE!" << std::endl;
-                glVertex2f(y+x_offset, x+y_offset);
+                // std::cout << "LINE!" << std::endls
+                glBegin(GL_TRIANGLES);
+                glPointSize(10);
+                glColor3f(0.0f, 0.0f, 0.0f);
+                glVertex2f(y+x_offset+5, x+y_offset);
                 glVertex2f(x_offset, y_offset);
-                glVertex2f(y+x_offset, -x+y_offset);
-                glVertex2f(x_offset, y_offset);
+                glVertex2f(y+x_offset+5, -x+y_offset);
+                glEnd();
                 break;
             }
             case 1:{
-                glVertex2f(-y+x_offset, x+y_offset);
+                glBegin(GL_TRIANGLES);
+                glPointSize(10);
+                glColor3f(0.0f, 0.0f, 0.0f);
+                glVertex2f(-y+x_offset-5, x+y_offset);
                 glVertex2f(x_offset, y_offset);
-                glVertex2f(-y+x_offset, -x+y_offset);
-                glVertex2f(x_offset, y_offset);
+                glVertex2f(-y+x_offset-5, -x+y_offset);
+                glEnd();
                 break;
             }
             case 2:{
-                glVertex2f(x+x_offset, -y+y_offset);
+                glBegin(GL_TRIANGLES);
+                glPointSize(10);
+                glColor3f(0.0f, 0.0f, 0.0f);
                 glVertex2f(x_offset, y_offset);
-                glVertex2f(-x+x_offset, -y+y_offset);
-                glVertex2f(x_offset, y_offset);
+                glVertex2f(-x+x_offset, -y+y_offset-5);
+                glVertex2f(x+x_offset, -y+y_offset+-5);
+                glEnd();
                 break;
             }
             case 3:{
+                glBegin(GL_TRIANGLES);
+                glPointSize(10);
+                glColor3f(0.0f, 0.0f, 0.0f);
                 glVertex2f(x+x_offset, y+y_offset);
                 glVertex2f(x_offset, y_offset);
                 glVertex2f(-x+x_offset, y+y_offset);
-                glVertex2f(x_offset, y_offset);
+                glEnd();
                 break;
             }
         }
 
-        glEnd();
         glFlush();
     }
 
