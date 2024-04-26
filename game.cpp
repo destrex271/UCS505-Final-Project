@@ -50,8 +50,8 @@ namespace Game{
     void GameObject::drawWorld(){
         glClear(GL_COLOR_BUFFER_BIT);
         this->water_del *= -1;
-        for(int y = 10; y < this->screen_height; y+=15){
-            for(int x = 10; x < this->screen_width; x+=15){
+        for(int y = 10; y < this->screen_height; y+=30){
+            for(int x = 10; x < this->screen_width; x+=30){
                 std::cout << "Drawing" << std::endl;
                 glColor4f(0.3, 0.6, 1.0, 0.0);
                 glBegin(GL_LINES);
@@ -76,7 +76,8 @@ namespace Game{
     }
 
     void GameObject::renderGame(){
-        this->drawWorld();
+        /* this->drawWorld(); */
+        glClear(GL_COLOR_BUFFER_BIT);
         if(this->gameOver){
             this->gameOverScreen();
             return;

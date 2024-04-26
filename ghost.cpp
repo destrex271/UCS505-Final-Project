@@ -68,7 +68,7 @@ namespace Game{
 
         int step_x = acc_x*abs(diff_x)/(diff_x + 0.1); 
 
-        int step_y = acc_y;
+        int step_y = acc_y; //*abs(diff_x)/(diff_y + 0.1);
 
 
 
