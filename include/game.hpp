@@ -5,7 +5,7 @@ namespace Game{
         public:
             Pirahna* pirahnaObj;
             std::vector<Food> food;
-            int water_del = 2;
+            float water_del = 0.5;
             // Max Possible Size 300, 300
             int screen_height, screen_width, window_id;
             bool gameOver; // If true terminate everything

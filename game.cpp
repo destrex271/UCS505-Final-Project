@@ -58,12 +58,13 @@ namespace Game{
     void GameObject::drawWorld(){
         glClear(GL_COLOR_BUFFER_BIT);
         this->water_del *= -1;
-        for(int y = 10; y < this->screen_height; y+=20){
-            for(int x = 10; x < this->screen_width; x+=20){
+        for(int y = 10; y < this->screen_height; y+=15){
+            for(int x = 10; x < this->screen_width; x+=15){
                 std::cout << "Drawing" << std::endl;
-                glColor3f(1.0, 1.0, 1.0);
-                glBegin(GL_POINTS);
-                glVertex2f(x-water_del, y);
+                glColor4f(0.3, 0.6, 1.0, 0.0);
+                glBegin(GL_LINES);
+                glVertex2f(x-4 - water_del, y - water_del);
+                glVertex2f(x+4 + water_del, y + water_del);
                 glEnd();
             }
         }

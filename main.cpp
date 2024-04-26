@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 
-#define TIMER_DELAY 20
+#define TIMER_DELAY 30
 
 #define GAME_WIDTH 500
 #define GAME_HEIGHT 500
