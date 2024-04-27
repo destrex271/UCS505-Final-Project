@@ -3,8 +3,8 @@ DFLAGS = -lglut -lGLU -lGL
 INC_DIR = ./include
 
 
-output: main.o utils.o pirahna.o game.o shapes.o commons.o food.o ghost.o
-	$(CC) main.o utils.o pirahna.o game.o shapes.o food.o ghost.o commons.o -o output $(DFLAGS)
+output: main.o utils.o pirahna.o game.o shapes.o commons.o food.o net.o
+	$(CC) main.o utils.o pirahna.o game.o shapes.o food.o net.o commons.o -o output $(DFLAGS)
 
 main.o: main.cpp
 	$(CC) -c main.cpp -I$(INC_DIR) $(DFLAGS)
@@ -15,8 +15,8 @@ utils.o: utils.cpp $(INC_DIR)/utils.hpp
 pirahna.o: pirahna.cpp $(INC_DIR)/pirahna.hpp
 	$(CC) -c pirahna.cpp -I$(INC_DIR) $(DFLAGS)
 
-ghost.o: ghost.cpp $(INC_DIR)/pirahna.hpp
-	$(CC) -c ghost.cpp -I$(INC_DIR) $(DFLAGS)
+net.o: net.cpp $(INC_DIR)/pirahna.hpp
+	$(CC) -c net.cpp -I$(INC_DIR) $(DFLAGS)
 
 game.o: game.cpp $(INC_DIR)/game.hpp
 	$(CC) -c game.cpp -I$(INC_DIR) $(DFLAGS)

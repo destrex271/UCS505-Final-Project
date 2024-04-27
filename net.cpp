@@ -1,12 +1,13 @@
 #include "include/pirahna.hpp"
 #include "include/shapes.hpp"
 #include <iostream>
+#include <cstdlib>
 
 namespace Game{
     
     Net::Net(){
-        acc_x=1;
-        acc_y=1;
+        acc_x=4;
+        acc_y=4;
         pointsIfEaten = 100;
         pos_x = 20;
         pos_y = 20;
@@ -17,6 +18,7 @@ namespace Game{
         color[0] = 1.; 
         color[1] = 0.;
         color[2] = 0.;
+        direction = std::vector<int>(2, 0);
     }
 
     void Net::setX(int x){
@@ -59,31 +61,39 @@ namespace Game{
     }
 
     void Net::moveNet(int pos_x_pacman, int pos_y_pacman){
-        //Might change in the future;
-       
-        // std::cout << "BEFORE" << std::endl;
-        // std::cout << this->pos_x << " " << this->pos_y << std::endl;
-        int diff_x =  pos_x_pacman - this->pos_x;
-        int diff_y = pos_y_pacman - this->pos_y;
 
-        int step_x = acc_x*abs(diff_x)/(diff_x + 0.1); 
+        float num = (float)rand()/RAND_MAX;
+        if (num > 0.8){
+            int diff_x =  pos_x_pacman - this->pos_x;
+            int diff_y = pos_y_pacman - this->pos_y;
 
-        int step_y = acc_y; //*abs(diff_x)/(diff_y + 0.1);
+            if(abs(diff_x) > abs(diff_y)){
+                direction[0] = acc_x*abs(diff_x)/(diff_x + 0.1); 
+                direction[1] = 0;
+            } else{
+                direction[0] = 0;
+                direction[1] = acc_y;
+            }
 
-
-
-        this->pos_x += 0;
-        this->pos_y += acc_y;
-        /* if(abs(diff_x) > abs(diff_y)) this->pos_x += step_x; */
-        /* else this->pos_y += step_y; */
-        // std::cout << "AFTER" << std::endl;
-        // std::cout << this->pos_x << " " << this->pos_y << std::endl;
+            this->pos_x += direction[0];
+            this->pos_y += direction[1];
+        }
+        else if (num > 0.4){
+            this->pos_x += direction[0];
+            this->pos_y += direction[1];
+        
+        } else {
+            int ub = 1, lb = -1;
+            int num_step_x = (rand() % (ub - lb + 1)) + lb;
+            int num_step_y = (rand() % (ub - lb + 1)) + lb;
+            this->pos_x += num_step_x;
+            this->pos_y += num_step_y;
+        };
+        // checkCollisions();
+        
     }
 
     void Net::renderNet(){
-
-        // std::cout << "Drawing ghost..." << std::endl;
-
         Sprites::drawNet(size, pos_x, pos_y, color[0], color[1], color[2]);
     }
 
@@ -92,15 +102,21 @@ namespace Game{
 
         switch(bound){
             case Boundary::TOP:
-                std::cout << "HIT TOP BOUND" << std::endl;
-                this->acc_y *= -1;
+                acc_y *= -1;
+                pos_y = 50;
                 break;
             case Boundary::BOTTOM:
-                std::cout << "HIT BOTTOM BOUND" << std::endl;
-                this->acc_y *= -1;
+                acc_y *= -1;
+                pos_y = screen_height - 50;
                 break;
-            case Boundary::NONE:
-                return;
+            case Boundary::LSIDE:
+                acc_x *= -1;
+                pos_x = 50;
+                break;
+            case Boundary::RSIDE:
+                acc_x *= -1;
+                pos_x = screen_width - 50;
+                break;
         }
     }
 

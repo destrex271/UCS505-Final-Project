@@ -19,6 +19,7 @@ namespace Game{
             int timeLeftHarmless;
             int pointsIfEaten;
             float color[3];
+            std::vector<int> direction;
 
         public:
             int size; 
