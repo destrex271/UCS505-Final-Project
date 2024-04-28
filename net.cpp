@@ -9,8 +9,8 @@ namespace Game{
         acc_x=4;
         acc_y=4;
         pointsIfEaten = 100;
-        pos_x = 20;
-        pos_y = 20;
+        pos_x = 35;
+        pos_y = 35;
         size = 15;
         harmless = false;
         area_x = 20;
@@ -99,25 +99,29 @@ namespace Game{
 
     void Net::checkCollisions(){
         auto bound = hitBoundary();
+        if (bound == Boundary::NONE) return;
 
-        switch(bound){
-            case Boundary::TOP:
-                acc_y *= -1;
-                pos_y = 50;
-                break;
-            case Boundary::BOTTOM:
-                acc_y *= -1;
-                pos_y = screen_height - 50;
-                break;
-            case Boundary::LSIDE:
-                acc_x *= -1;
-                pos_x = 50;
-                break;
-            case Boundary::RSIDE:
-                acc_x *= -1;
-                pos_x = screen_width - 50;
-                break;
-        }
+        pos_x = screen_width/2;
+        pos_y = screen_height/2;
+
+        // switch(bound){
+        //     case Boundary::TOP:
+        //         acc_y *= -1;
+        //         pos_y = 50;
+        //         break;
+        //     case Boundary::BOTTOM:
+        //         acc_y *= -1;
+        //         pos_y = screen_height - 50;
+        //         break;
+        //     case Boundary::LSIDE:
+        //         acc_x *= -1;
+        //         pos_x = 50;
+        //         break;
+        //     case Boundary::RSIDE:
+        //         acc_x *= -1;
+        //         pos_x = screen_width - 50;
+        //         break;
+        // }
     }
 
 }
