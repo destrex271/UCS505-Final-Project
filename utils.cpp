@@ -24,6 +24,10 @@ namespace Game{
         gameObject = gobj;
     }
 
+    GameObject* getGameObject(){
+        return gameObject;
+    }
+
     void drawGame(){
         gameObject->renderGame();
     }
@@ -65,6 +69,7 @@ namespace Game{
             case 'R':
                 std::cout << "Restart Game!" << std::endl;
                 if(gameObject->gameOver){
+                    delete getGameObject();
                     GameObject* j = new GameObject(500, 500, 1);
                     setGameObject(j);
                 }

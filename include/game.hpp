@@ -1,10 +1,11 @@
 #include "pirahna.hpp"
+#include "map"
 
 namespace Game{
     class GameObject{
         public:
             Pirahna* pirahnaObj;
-            std::vector<Food> food;
+            std::map<std::pair<int, int>, Food*> food;
             float water_del = 0.5;
             // Max Possible Size 300, 300
             int screen_height, screen_width, window_id;
@@ -14,6 +15,9 @@ namespace Game{
             void renderGame();
             void gameOverScreen();
             void checkNetCollision();
+            void checkFoodCollision();
+            void cleanUp();
+            void addFood();
             void quitWindow();
             std::pair<int, int> scaleToWindowDim(std::pair<int, int> screen_dim);
             void drawWorld();
@@ -21,7 +25,6 @@ namespace Game{
             Net ghosts[4];
             int score;
 
-            Food* khana = new Food(150,150);            
 
     };
 

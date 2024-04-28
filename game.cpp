@@ -2,6 +2,7 @@
 #include <GL/freeglut_std.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <cstdlib>
 #include <iostream>
 #include <GL/glut.h>
 
@@ -13,6 +14,10 @@ namespace Game{
         this->screen_width = screen_width;
         this->screen_height = screen_height;
         this->window_id = window_id;
+        for(int i = 0; i < 6; i++){
+            this->addFood();
+        }
+        auto khana = new Food(150,150);            
         pirahnaObj = new Pirahna(screen_height, screen_width);
 
         for (int i = 1; i < NUM_GHOSTS; i++){
@@ -34,7 +39,7 @@ namespace Game{
 
     void GameObject::gameOverScreen(){
         glColor3f(1, 1, 1);
-        std::string s = "Game Over!";
+        std::string s = "Your Score Was: " + std::to_string(this->score);
         glRasterPos2f(250 - s.size(), 250);
         for(auto c: s){
             glutBitmapCharacter(GLUT_BITMAP_8_BY_13, c);
@@ -45,14 +50,26 @@ namespace Game{
         for(auto c: s){
             glutBitmapCharacter(GLUT_BITMAP_8_BY_13, c);
         }
+
+        s = "Game Over!";
+        glRasterPos2f(250 - s.size() * 2, 280);
+        for(auto c: s){
+            glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
+        }
     }
 
     void GameObject::drawWorld(){
         glClear(GL_COLOR_BUFFER_BIT);
-        this->water_del *= -1;
+        glColor3f(1, 1, 1);
+        std::string s = "Score is: " + std::to_string(this->score);
+        glRasterPos2f(10,10);
+        for(auto c: s){
+            glutBitmapCharacter(GLUT_BITMAP_9_BY_15, c);
+        }
+        this->water_del = -1;
+        if(this->gameOver) return;
         for(int y = 10; y < this->screen_height; y+=30){
             for(int x = 10; x < this->screen_width; x+=30){
-                std::cout << "Drawing" << std::endl;
                 glColor4f(0.3, 0.6, 1.0, 0.0);
                 glBegin(GL_LINES);
                 glVertex2f(x-4 - water_del, y - water_del);
@@ -68,6 +85,7 @@ namespace Game{
         std::cout << "\tGrid Width: " << screen_width << std::endl;
         std::cout << "\tGrid Height: " << screen_height << std::endl;
         std::cout << "\tGame Over: " << gameOver << std::endl;
+        std::cout << "\tFood Left: " << this->food.size() << std::endl;
         std::cout << "===============================" << std::endl << std::endl;
     }
 
@@ -76,8 +94,7 @@ namespace Game{
     }
 
     void GameObject::renderGame(){
-        /* this->drawWorld(); */
-        glClear(GL_COLOR_BUFFER_BIT);
+        this->drawWorld();
         if(this->gameOver){
             this->gameOverScreen();
             return;
@@ -86,10 +103,13 @@ namespace Game{
         this->pirahnaObj->drawPirahna();
         this->pirahnaObj->movePirahna();
 
-        this->khana->drawFood();        
+        for(auto item: this->food){
+            if(item.second != nullptr)
+                item.second->drawFood();    
+        }
 
         for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].moveNet(this->pirahnaObj->pos_x, this->pirahnaObj->pos_y);
-
+        
         for (int i = 0; i < NUM_GHOSTS; i++){
             for (int j = i + 1; j < NUM_GHOSTS; j++){
                 if (this->ghosts[i].isIntersecting(this->ghosts[j])){
@@ -100,14 +120,15 @@ namespace Game{
                 }
             }
         }
-
+        
         for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].renderNet();
         
-
-
+        
+        
         this->ghosts[3].renderNet();
         this->ghosts[3].moveNet(this->pirahnaObj->pos_x, this->pirahnaObj->pos_y);
 
+        this->checkFoodCollision();
         this->checkNetCollision();
 
         //function to update pellet counts
@@ -124,6 +145,44 @@ namespace Game{
             if(ok){
                 this->gameOver = true;
             }
+        }
+    }
+
+    void GameObject::checkFoodCollision(){
+        bool addFood = false;
+        for(auto pr: food){
+            auto item = pr.second;
+            if(item != nullptr && this->pirahnaObj->isIntersecting(*item)){
+                this->score++;
+                food[pr.first] = nullptr;
+                std::cout << "New Score is: " << this->score << std::endl;
+                addFood = true;
+                break;
+            }
+        }
+        if(addFood){
+            this->addFood();
+            this->cleanUp();
+        }
+    }
+
+    void GameObject::addFood(){
+        int x = rand()%(this->screen_width - 30 + 1);
+        int y = rand()%(this->screen_height - 30  + 1);
+        auto khana = new Food(x, y);
+        this->food[{x, y}] = khana;
+    }
+
+    void GameObject::cleanUp(){
+        std::vector<std::pair<int, int>> to_rem;
+        for(auto entry: this->food){
+            if(entry.second == nullptr){
+                to_rem.push_back(entry.first);
+            }
+        }
+
+        for(auto key: to_rem){
+            this->food.erase(key);
         }
     }
 

@@ -72,8 +72,10 @@ namespace Game{
 
 
 
-        if(abs(diff_x) > abs(diff_y)) this->pos_x += step_x;
-        else this->pos_y += step_y;
+        this->pos_x += 0;
+        this->pos_y += acc_y;
+        /* if(abs(diff_x) > abs(diff_y)) this->pos_x += step_x; */
+        /* else this->pos_y += step_y; */
         // std::cout << "AFTER" << std::endl;
         // std::cout << this->pos_x << " " << this->pos_y << std::endl;
     }

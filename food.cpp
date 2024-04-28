@@ -1,5 +1,5 @@
 #include "include/pirahna.hpp"
-#include "shapes.hpp"
+#include "include/shapes.hpp"
 
 namespace Game {
     Food::Food(int x_offset,int y_offset){
