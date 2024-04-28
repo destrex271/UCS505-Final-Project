@@ -7,10 +7,10 @@
 #include <string>
 #include <iostream>
 
-#define TIMER_DELAY 30
+#define TIMER_DELAY 20
 
-#define GAME_WIDTH 500
-#define GAME_HEIGHT 500
+#define GAME_WIDTH 600
+#define GAME_HEIGHT 600
 
 void animate(int v){
     glutPostRedisplay();
