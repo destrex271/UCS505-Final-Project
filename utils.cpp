@@ -9,10 +9,14 @@
 
 
 namespace Game{
+    int MAX_WIDTH;
+    int MAX_HEIGHT;
     int windowId;
     int createWindow(char* title, int WIDTH, int HEIGHT){
         glutInitWindowSize(WIDTH, HEIGHT);
         windowId = glutCreateWindow(title);
+        MAX_WIDTH = WIDTH;
+        MAX_HEIGHT = HEIGHT;
         std::cout << "Created Window" << WIDTH << " " << HEIGHT << std::endl;
         return windowId;
     }
@@ -69,7 +73,7 @@ namespace Game{
                 std::cout << "Restart Game!" << std::endl;
                 if(gameObject->gameOver){
                     delete getGameObject();
-                    GameObject* j = new GameObject(500, 500, 1);
+                    GameObject* j = new GameObject(MAX_WIDTH, MAX_HEIGHT, 1);
                     setGameObject(j);
                 }
                 break;
