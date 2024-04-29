@@ -14,6 +14,12 @@ This will generate a file named output which can be run as
 ./output
 ```
 
+or run
+
+```bash
+source run.sh
+```
+
 ## Dependecies
 
 Install ```freeglut3-dev``` library.

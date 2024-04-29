@@ -32,10 +32,11 @@ namespace Game{
             int getY();
             void moveNet(int pos_x_pacman, int pos_y_pacman);
             void renderNet();
-            void setHarmless(bool state);
             void setNetColor(float r, float g, float b);
             std::vector<float> getNetColor();
             void checkCollisions();
+            int gen_rand(int lb, int ub);
+            void setScreen(int width, int height);
     };
 
     class Food : public BoxObject{

@@ -21,6 +21,15 @@ namespace Game{
         direction = std::vector<int>(2, 0);
     }
 
+    void Net::setScreen(int width, int height){
+        this->screen_width = width;
+        this->screen_height = height;
+    }
+
+    int Net::gen_rand(int lb, int ub){
+        return (rand() % (ub - lb + 1)) + lb;
+    }
+
     void Net::setX(int x){
         this->pos_x = x;
     }
@@ -54,12 +63,6 @@ namespace Game{
         return {color[0], color[1], color[2]};
     }
 
-    void Net::setHarmless(bool state){
-        this->harmless = state;
-        //setting a timer of ten seconds, not used right now
-        this->timeLeftHarmless = 10;
-    }
-
     void Net::moveNet(int pos_x_pacman, int pos_y_pacman){
 
         float num = (float)rand()/RAND_MAX;
@@ -83,13 +86,12 @@ namespace Game{
             this->pos_y += direction[1];
         
         } else {
-            int ub = 1, lb = -1;
-            int num_step_x = (rand() % (ub - lb + 1)) + lb;
-            int num_step_y = (rand() % (ub - lb + 1)) + lb;
+            int num_step_x = gen_rand(-1, 1);
+            int num_step_y = gen_rand(-1, 1);
             this->pos_x += num_step_x;
             this->pos_y += num_step_y;
         };
-        // checkCollisions();
+        checkCollisions();
         
     }
 
@@ -101,27 +103,8 @@ namespace Game{
         auto bound = hitBoundary();
         if (bound == Boundary::NONE) return;
 
-        pos_x = screen_width/2;
-        pos_y = screen_height/2;
-
-        // switch(bound){
-        //     case Boundary::TOP:
-        //         acc_y *= -1;
-        //         pos_y = 50;
-        //         break;
-        //     case Boundary::BOTTOM:
-        //         acc_y *= -1;
-        //         pos_y = screen_height - 50;
-        //         break;
-        //     case Boundary::LSIDE:
-        //         acc_x *= -1;
-        //         pos_x = 50;
-        //         break;
-        //     case Boundary::RSIDE:
-        //         acc_x *= -1;
-        //         pos_x = screen_width - 50;
-        //         break;
-        // }
+        pos_x = gen_rand(area_x + size, screen_width - area_x - size);
+        pos_y = area_y + size;
     }
 
 }
