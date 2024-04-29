@@ -19,7 +19,7 @@ namespace Game{
 
     void Pirahna::setDirection(Direction dirn){
         this->currentDirection = dirn;
-        std::cout << "Direction set to " << dirn << std::endl;
+        // std::cout << "Direction set to " << dirn << std::endl;
     }
 
     void Pirahna::drawPirahna(){
@@ -50,19 +50,19 @@ namespace Game{
         // std::cout << "Check stat: " << stat << std::endl;
         switch(stat){
             case Boundary::RSIDE:
-                std::cout << "HIT RIGHT BOUND" << std::endl;
+                // std::cout << "HIT RIGHT BOUND" << std::endl;
                 this->currentDirection = Direction::LEFT;
                 break;
             case Boundary::LSIDE:
-                std::cout << "HIT LEFT BOUND" << std::endl;
+                // std::cout << "HIT LEFT BOUND" << std::endl;
                 this->currentDirection = Direction::RIGHT;
                 break;
             case Boundary::TOP:
-                std::cout << "HIT TOP BOUND" << std::endl;
+                // std::cout << "HIT TOP BOUND" << std::endl;
                 this->currentDirection = Direction::DOWN;
                 break;
             case Boundary::BOTTOM:
-                std::cout << "HIT BOTTOM BOUND" << std::endl;
+                // std::cout << "HIT BOTTOM BOUND" << std::endl;
                 this->currentDirection = Direction::UP;
                 break;
             case Boundary::NONE:

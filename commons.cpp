@@ -20,16 +20,16 @@ namespace Game{
         // std::cout << "Current Y-TOP: " << this->pos_y - area_y << "Current Y-Bottom: " << this->pos_y + area_y << std::endl;
         // std::cout << "Screen width: " << this->screen_width << "Screen Height: " << this->screen_height << std::endl;
         if(this->pos_x - area_x <= 0){
-            std::cout << "Hit left" << std::endl;
+            // std::cout << "Hit left" << std::endl;
             return Boundary::LSIDE;
         }else if(this->pos_x + area_x >= screen_width) {
-            std::cout << "Hit Right" << std::endl;
+            // std::cout << "Hit Right" << std::endl;
             return Boundary::RSIDE;
         } else if(this->pos_y - area_y <= 0) {
-            std::cout << "Hit top" << std::endl;
+            // std::cout << "Hit top" << std::endl;
             return Boundary::TOP;
         }else if(this->pos_y + area_y >= screen_height) {
-            std::cout << "Hit bottom" << std::endl;
+            // std::cout << "Hit bottom" << std::endl;
             return Boundary::BOTTOM;
         }
         return Boundary::NONE;

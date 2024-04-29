@@ -20,17 +20,27 @@ namespace Game{
         auto khana = new Food(150,150);            
         pirahnaObj = new Pirahna(screen_height, screen_width);
 
-        for (int i = 1; i < NUM_GHOSTS; i++){
-            this->ghosts[i].setX(screen_width/NUM_GHOSTS * i);
-            this->ghosts[i].setY(30);
+        for (int i = 0; i < NUM_GHOSTS; i++) ghosts[i].setScreen(screen_width, screen_height);
+        int ghost_x = this->ghosts[0].area_x;
+        int ghost_y = this->ghosts[0].area_y;
 
-            this->ghosts[i].setAx(i);
-            this->ghosts[i].setAy(i);
-        }
+        this->ghosts[1].setX(screen_width - ghost_x - 10);
+        this->ghosts[1].setY(ghost_y + 10);
+
+        this->ghosts[2].setX(screen_width/3);
+        this->ghosts[2].setY(ghost_y + 10);
+
+        this->ghosts[3].setX(2*screen_width/3);
+        this->ghosts[3].setY(ghost_y + 10);
         
         this->ghosts[1].setNetColor(1, 0.5, 0);
         this->ghosts[2].setNetColor(0, 1, 1);
         this->ghosts[3].setNetColor(1, 0.4, 0.4);
+
+        this->ghosts[2].setAy(3);
+        this->ghosts[3].setAy(3);
+        this->ghosts[2].setAx(3);
+        this->ghosts[3].setAx(3);
 
         gameOver = false;
 
@@ -122,11 +132,6 @@ namespace Game{
         }
         
         for (int i = 0; i < NUM_GHOSTS; i++) this->ghosts[i].renderNet();
-        
-        
-        
-        this->ghosts[3].renderNet();
-        this->ghosts[3].moveNet(this->pirahnaObj->pos_x, this->pirahnaObj->pos_y);
 
         this->checkFoodCollision();
         this->checkNetCollision();
