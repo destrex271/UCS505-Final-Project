@@ -236,25 +236,29 @@ namespace Game{
         glPointSize(1.0);
         glColor3f(r, g, b);
 
-        int y = radius, x = 0, pi = (5/4.0) - y;
-        while(x <= y){
-            drawPoint(-x + h, -y + k);
-            drawPoint(x + h, -y + k);
-            drawPoint(-y + h, -x + k);
-            drawPoint(y + h, -x + k);
+        // int y = radius, x = 0, pi = (5/4.0) - y;
+        // while(x <= y){
+        //     drawPoint(-x + h, -y + k);
+        //     drawPoint(x + h, -y + k);
+        //     drawPoint(-y + h, -x + k);
+        //     drawPoint(y + h, -x + k);
 
-            std::vector<int> coords = Circle::calc_d_MidPoint(pi, x, y);
-            pi = coords[0];
-            x = coords[1];
-            y = coords[2];
-        }
+        //     std::vector<int> coords = Circle::calc_d_MidPoint(pi, x, y);
+        //     pi = coords[0];
+        //     x = coords[1];
+        //     y = coords[2];
+        // }
 
-        Line::drawLineVertical(radius + h, 0 + k, radius + k, r, g, b);
+        Line::drawLineVertical(radius + h, -radius + k, radius + k, r, g, b);
         Line::drawLineHorizontal(radius + h, -radius + h, radius + k, r, g, b);
-        Line::drawLineVertical(-radius + h, 0 + k, radius + k, r, g, b);
+        Line::drawLineVertical(0 + h, -radius + k, radius + k, r, g, b);
+        Line::drawLineHorizontal(radius + h, -radius + h, 0 + k, r, g, b);
+        Line::drawLineHorizontal(radius + h, -radius + h, -radius + k, r, g, b);
+        Line::drawLineVertical(-radius + h, -radius + k, radius + k, r, g, b);
         
         glFlush();
     }
+
             void Circle::drawFood(int x_offset, int y_offset){
         // glClear(GL_COLOR_BUFFER_BIT);
         glColor3f(0.5, 0.25, 0.25);
