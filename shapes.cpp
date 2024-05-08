@@ -191,7 +191,11 @@ namespace Game{
                 glColor3f(0.0f, 0.0f, 0.0f);
                 glVertex2f(y+x_offset+5, x+y_offset);
                 glVertex2f(x_offset, y_offset);
-                glVertex2f(y+x_offset+5, -x+y_offset);
+                glVertex2f(y+x_offset+3, -x+y_offset+10);
+                glColor3f(0.0f, 1.0f, 0.0f);
+                glVertex2f(y+x_offset-2*radius - 5, x+y_offset - 3);
+                glVertex2f(x_offset-radius, y_offset);
+                glVertex2f(y+x_offset - 2*radius - 5, -x+y_offset + 3);
                 glEnd();
                 break;
             }
@@ -201,17 +205,28 @@ namespace Game{
                 glColor3f(0.0f, 0.0f, 0.0f);
                 glVertex2f(-y+x_offset-5, x+y_offset);
                 glVertex2f(x_offset, y_offset);
-                glVertex2f(-y+x_offset-5, -x+y_offset);
+                glVertex2f(-y+x_offset-5, -x+y_offset+10);
+                glColor3f(0.0f, 1.0f, 0.0f);
+                glVertex2f(-y+x_offset+2*radius, x+y_offset-3);
+                glVertex2f(x_offset + radius, y_offset);
+                glVertex2f(-y+x_offset+2*radius, -x+y_offset+3);
                 glEnd();
                 break;
             }
             case 2:{
                 glBegin(GL_TRIANGLES);
                 glPointSize(10);
+                
                 glColor3f(0.0f, 0.0f, 0.0f);
                 glVertex2f(x_offset, y_offset);
-                glVertex2f(-x+x_offset, -y+y_offset-5);
-                glVertex2f(x+x_offset, -y+y_offset+-5);
+                glVertex2f(-x+x_offset+7, -y+y_offset-5);
+                glVertex2f(x+x_offset-7, -y+y_offset+-5);
+
+                glColor3f(0.0f, 1.0f, 0.0f);
+                glVertex2f(x_offset, y_offset+radius);
+                glVertex2f(-x+x_offset, -y+y_offset+2*radius);
+                glVertex2f(x+x_offset, -y+y_offset+2*radius);
+
                 glEnd();
                 break;
             }
@@ -219,9 +234,15 @@ namespace Game{
                 glBegin(GL_TRIANGLES);
                 glPointSize(10);
                 glColor3f(0.0f, 0.0f, 0.0f);
-                glVertex2f(x+x_offset, y+y_offset);
+                glVertex2f(x+x_offset-5, y+y_offset);
                 glVertex2f(x_offset, y_offset);
-                glVertex2f(-x+x_offset, y+y_offset);
+                glVertex2f(-x+x_offset-5, y+y_offset);
+
+                glColor3f(0.0f, 1.0f, 0.0f);
+                glVertex2f(x+x_offset, y+y_offset-2*radius);
+                glVertex2f(x_offset, y_offset-radius);
+                glVertex2f(-x+x_offset, y+y_offset-2*radius);
+
                 glEnd();
                 break;
             }

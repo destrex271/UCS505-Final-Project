@@ -2,7 +2,7 @@
 #include <iostream>
 #include "include/shapes.hpp"
 
-#define PAC_ACC 7
+#define PAC_ACC 5
 
 namespace Game{
     // Pirhana Object
