@@ -1,7 +1,8 @@
-# PacMan Clone in OpenGL
+# Piranha Escape in OpenGL
 
 ## Compilation
 
+There are two alternatives you can use for running this project:
 To compile this project use:
 
 ```bash
@@ -14,12 +15,13 @@ This will generate a file named output which can be run as
 ./output
 ```
 
-or run
+or just run
 
 ```bash
 source run.sh
 ```
 
-## Dependecies
+## Dependencies
+On a linux system,
 
 Install ```freeglut3-dev``` library.
