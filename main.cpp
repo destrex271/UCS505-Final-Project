@@ -34,7 +34,7 @@ void init(){
 // Display a simple window
 int main(int argc, char** argv){
     glutInit(&argc, argv);
-    std::string title = "Pacman";
+    std::string title = "Piranha Escape";
     
 
     int id = Game::createWindow(title.data(), GAME_WIDTH, GAME_HEIGHT);
